@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import MagazineViewSet, ArticleViewSet, ArticleAuthorViewSet, ArticleCategoriesViewSet, upload_file
 
 router = DefaultRouter()
-router.register('magazines', MagazineViewSet)
+router.register('', MagazineViewSet)
 router.register('articles', ArticleViewSet)
 router.register('article-authors', ArticleAuthorViewSet)
 router.register('article-categories', ArticleCategoriesViewSet)

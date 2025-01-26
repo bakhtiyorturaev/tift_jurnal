@@ -40,7 +40,7 @@ def upload_file(request):
     if request.method == 'POST':
         file = request.FILES.get('upload')  # Yuklangan fayl
         if file:
-            fs = FileSystemStorage(location='magazines/magazine/bio_files/')  # Fayllarni saqlash uchun katalog belgilash
+            fs = FileSystemStorage(location='jurnal/bio_files/')  # Fayllarni saqlash uchun katalog belgilash
             filename = fs.save(file.name, file)  # Faylni saqlash
             file_url = fs.url(filename)  # Fayl uchun URL olish
             return JsonResponse({"uploaded": True, "url": file_url})

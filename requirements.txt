@@ -3,6 +3,7 @@ certifi
 charset-normalizer
 coreapi
 coreschema
+dj-database-url
 Django
 django-ckeditor-5
 django-jazzmin
@@ -18,12 +19,14 @@ MarkupSafe
 openapi-codec
 packaging
 pillow
+psycopg2-binary
 python-dotenv
 pytz
 PyYAML
 requests
 simplejson
 sqlparse
+typing_extensions
 uritemplate
 urllib3
 whitenoise

@@ -11,6 +11,7 @@ django-js-asset
 django-rest-swagger
 djangorestframework
 drf-yasg
+gunicorn
 idna
 inflection
 itypes

@@ -1,5 +1,5 @@
 from django.db import models
-from bosh_sahifa.models import Magazine
+from bosh_sahifa.models import Magazine, Article
 from django_ckeditor_5.fields import CKEditor5Field
 
 class AboutMagazine(models.Model):
@@ -55,13 +55,23 @@ class MagazineArchive(models.Model):
     def __str__(self):
         return 'Archive'
 
-class MagazineStatistics(models.Model):
-    title = models.CharField(max_length=200, verbose_name="Statistika nomi")
-    content = CKEditor5Field(config_name='extends')
 
-    class Meta:
-        verbose_name = 'Statistika'
-        verbose_name_plural = 'Jurnal statistikasi'
+class Statistics(models.Model):
+    magazine = models.OneToOneField(Magazine, on_delete=models.CASCADE, related_name='statistics')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Statistika kiritilgan sana")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Statistika yangilangan sana")
+
+    def magazine_info(self):
+        """Jurnal haqida to‘liq ma'lumot: sana va nechanchi sonligi"""
+        return f"{self.magazine.created_at.year}-yil, {self.magazine.which_number}-son, {self.magazine.created_at.strftime('%B')}"
+
+    def articles_count(self):
+        """O‘sha jurnalga tegishli maqolalar soni"""
+        return self.magazine.articles.count()
 
     def __str__(self):
-        return self.title
+        return f"Statistika: {self.magazine.name}"
+
+    class Meta:
+        verbose_name = "Statistika"
+        verbose_name_plural = "Statistikalar"

@@ -1,4 +1,4 @@
-from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive, MagazineStatistics
+from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive, Statistics
 from rest_framework import serializers
 
 
@@ -23,8 +23,10 @@ class MagazineArchiveSerializer(serializers.ModelSerializer):
         model = MagazineArchive
         fields = '__all__'
 
-class MagazineStatisticSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MagazineStatistics
-        fields = '__all__'
+class StatisticsSerializer(serializers.ModelSerializer):
+    magazine_info = serializers.CharField(source='magazine_info', read_only=True)
+    articles_count = serializers.IntegerField(source='articles_count', read_only=True)
 
+    class Meta:
+        model = Statistics
+        fields = ['id', 'magazine', 'magazine_info', 'articles_count']

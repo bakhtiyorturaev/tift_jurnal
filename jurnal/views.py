@@ -2,10 +2,11 @@ from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive, MagazineStatistics
-from .serializers import AboutMagazineSerializer, MagazineNewsSerializer, MagazineRequirementsSerializer, \
-    MagazineArchiveSerializer, MagazineStatisticSerializer
+from rest_framework.viewsets import ReadOnlyModelViewSet
 
+from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive, Statistics
+from .serializers import AboutMagazineSerializer, MagazineNewsSerializer, MagazineRequirementsSerializer, \
+    MagazineArchiveSerializer, StatisticsSerializer
 
 class AboutMagazineViewSet(viewsets.ModelViewSet):
     queryset = AboutMagazine.objects.all()
@@ -33,9 +34,6 @@ class MagazineArchiveListView(ListAPIView):
     pagination_class = MagazinePagination
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-class MagazineStatisticsListView(ListAPIView):
-    queryset = MagazineStatistics.objects.all()
-    serializer_class = MagazineStatisticSerializer
-    pagination_class = MagazinePagination
-    permission_classes = [IsAuthenticatedOrReadOnly]
-
+class StatisticsViewSet(ReadOnlyModelViewSet):
+    queryset = Statistics.objects.all()
+    serializer_class = StatisticsSerializer

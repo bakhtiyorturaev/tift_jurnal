@@ -57,7 +57,7 @@ class MagazineArchive(models.Model):
 
 
 class Statistics(models.Model):
-    magazine = models.OneToOneField(Magazine, on_delete=models.CASCADE, related_name='statistics')
+    magazine = models.OneToOneField(Magazine, on_delete=models.CASCADE, blank=True, null=True, related_name='statistics', verbose_name="Jurnal")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Statistika kiritilgan sana")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Statistika yangilangan sana")
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive
+from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive, Statistics
 
 
 @admin.register(AboutMagazine)
@@ -25,7 +25,7 @@ class MagazineArchiveAdmin(admin.ModelAdmin):
     list_display = ('id',)
     search_fields = ('content',)
     ordering = ('-id',)
-
+@admin.register(Statistics)
 class StatisticsAdmin(admin.ModelAdmin):
     list_display = ('id', 'magazine', 'magazine_info', 'articles_count', 'updated_at')
     readonly_fields = ('magazine_info', 'articles_count', 'created_at', 'updated_at')

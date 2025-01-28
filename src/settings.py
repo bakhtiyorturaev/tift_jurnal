@@ -16,8 +16,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG') == 'True'
-
+# DEBUG = os.getenv('DEBUG') == 'True'
+DEBUG = False
 SECRET_ADMIN_URL = os.getenv('SECRET_ADMIN_URL')
 
 ALLOWED_HOSTS = ['*']
@@ -128,11 +128,13 @@ USE_L10N = False
 if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-STATICFILES_DIRS =[ os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS =[ os.path.join(BASE_DIR, 'static'),
+                    ]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -150,7 +152,7 @@ SWAGGER_SETTINGS = {
 }
 
 
-CKEDITOR_5_CUSTOM_CSS = '/staticfiles/django-ckeditor_5/src/override-django.css' # optional
+CKEDITOR_5_CUSTOM_CSS = '/staticfiles/django-ckeditor_5/src/override-django.css'
 
 from ckeditor_5_codes import CKEDITOR_5_CONFIGS, customColorPalette
 customColorPalette = customColorPalette

@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
-from django_ckeditor_5.fields import CKEditor5Field
 
 class Magazine(models.Model):
     name = models.CharField(max_length=200, verbose_name='jurnal nomi')

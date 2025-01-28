@@ -1,28 +1,11 @@
 from django.contrib import admin
-from django import forms
-from django_ckeditor_5.fields import CKEditor5Field
-from django_ckeditor_5.widgets import CKEditor5Widget
 from .models import Magazine, Article, ArticleAuthor, ArticleCategories
-
-class MagazineAdminForm(forms.ModelForm):
-
-    class Meta:
-        model = Magazine
-        fields = '__all__'  # yoki kerakli boshqa fieldlar
-        widgets = {
-            "bio": CKEditor5Widget(
-                attrs={"class": "django_ckeditor_5"}, config_name='default'
-            )
-        }
 
 @admin.register(Magazine)
 class MagazineAdmin(admin.ModelAdmin):
-    form = MagazineAdminForm
     list_display = ('name', 'which_number', 'created_at')
     search_fields = ('name', 'created_at')
-    formfield_overrides = {
-        CKEditor5Field: {'widget': CKEditor5Widget(config_name='extends')},  # Kengaytirilgan CKEditor toolbarni qo'llash
-    }
+
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):

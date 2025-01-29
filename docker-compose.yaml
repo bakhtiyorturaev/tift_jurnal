@@ -5,9 +5,9 @@ services:
     image: postgres:15
     container_name: db
     environment:
-      POSTGRES_DB: tiftjurnaldb
-      POSTGRES_USER: baxtiyor
-      POSTGRES_PASSWORD: pMjOIRhP9ONFGFYnxt9oiCc13Bdp2Bgj
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - pg_data:/var/lib/postgresql/data
     networks:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgresql://baxtiyor:pMjOIRhP9ONFGFYnxt9oiCc13Bdp2Bgj@db:5432/tiftjurnaldb
+      - DATABASE_URL=${DATABASE_URL}
     networks:
       - backend
 #    entrypoint: [ "./wait-for-it.sh", "db:5432", "--", "gunicorn", "--bind", "0.0.0.0:8000", "src.wsgi:application" ]

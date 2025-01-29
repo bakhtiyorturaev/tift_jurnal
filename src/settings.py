@@ -21,9 +21,25 @@ SECRET_ADMIN_URL = os.getenv('SECRET_ADMIN_URL')
 
 ALLOWED_HOSTS = ['*']
 
-import dj_database_url
+# import dj_database_url
+# DATABASES = {
+#     'default': dj_database_url.parse(os.getenv('DATABASES'))
+# }
+from urllib.parse import urlparse
+DATABASE_URL = os.getenv('DATABASES')
+
+# URLni tahlil qilish
+url = urlparse(DATABASE_URL)
+
 DATABASES = {
-    'default': dj_database_url.parse(os.getenv('DATABASES'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': url.path[1:],
+        'USER': url.username,
+        'PASSWORD': url.password,
+        'HOST': url.hostname,
+        'PORT': url.port,
+    }
 }
 
 # Application definition
@@ -119,7 +135,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-DATE_FORMAT = 'Y-m-d'
+DATE_FORMAT = "Y-m-d"
 USE_L10N = False
 
 # Static files (CSS, JavaScript, Images)
@@ -133,6 +149,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 STATICFILES_DIRS =[ os.path.join(BASE_DIR, 'static'),
                     ]
+CKEDITOR_5_UPLOAD_PATH = "uploads/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

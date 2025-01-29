@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: db
+    environment:
+      POSTGRES_DB: tiftjurnaldb
+      POSTGRES_USER: baxtiyor
+      POSTGRES_PASSWORD: pMjOIRhP9ONFGFYnxt9oiCc13Bdp2Bgj
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  web:
+    build: .
+    container_name: web
+    command: gunicorn --bind 0.0.0.0:8000 --timeout 120 src.wsgi:application
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://baxtiyor:pMjOIRhP9ONFGFYnxt9oiCc13Bdp2Bgj@db:5432/tiftjurnaldb
+    networks:
+      - backend
+#    entrypoint: [ "./wait-for-it.sh", "db:5432", "--", "gunicorn", "--bind", "0.0.0.0:8000", "src.wsgi:application" ]
+
+volumes:
+  pg_data:
+
+networks:
+  backend:
+    driver: bridge
+

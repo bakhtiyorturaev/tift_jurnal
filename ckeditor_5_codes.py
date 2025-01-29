@@ -31,9 +31,11 @@ CKEDITOR_5_CONFIGS = {
             'heading', '|', 'bold', 'italic', 'link', 'undo', 'redo', 'clipboard', 'alignment',
             'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', 'specialCharacters', 'mediaEmbed'
         ],
+        'removePlugins': 'override-django.css',
+
     },
     'extends': {
-        'placeholder': 'Type your text here...',  # Placeholder qo'shildi
+        'placeholder': 'Bu yerga yozing...',
         'contentCss': 'body { color: black; }',
         'blockToolbar': [
             'paragraph', 'heading1', 'heading2', 'heading3',
@@ -49,6 +51,7 @@ CKEDITOR_5_CONFIGS = {
             'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'mediaEmbed', 'removeFormat',
             'insertTable',
             'fontColor', '|',
+
 
         ],
         'fontColor': {

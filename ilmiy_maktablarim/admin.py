@@ -19,9 +19,8 @@ class IlmiyMaktablarimAdminForm(forms.ModelForm):
 @admin.register(IlmiyMaktablarim)
 class IlmiyMaktablarimAdmin(admin.ModelAdmin):
     form = IlmiyMaktablarimAdminForm
-    list_display = ['name', 'slug', 'academic_degree']
-    search_fields = ['name', 'slug', 'academic_degree']
-    prepopulated_fields = {'slug': ('name',)}
+    list_display = ['name', 'academic_degree']
+    search_fields = ['name', 'academic_degree']
     formfield_overrides = {
         CKEditor5Field: {'widget': CKEditor5Widget(config_name='extends')},  # Kengaytirilgan CKEditor toolbarni qo'llash
     }

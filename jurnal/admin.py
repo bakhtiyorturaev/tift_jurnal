@@ -4,8 +4,8 @@ from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineA
 
 @admin.register(AboutMagazine)
 class AboutMagazineAdmin(admin.ModelAdmin):
-    list_display = ['magazine', 'slug', 'bio']
-    search_fields = ['magazine__name', 'slug']
+    list_display = ['magazine', 'bio']
+    search_fields = ['magazine__name', ]
 
 @admin.register(MagazineNews)
 class MagazineNewsAdmin(admin.ModelAdmin):
@@ -30,9 +30,11 @@ class StatisticsAdmin(admin.ModelAdmin):
     list_display = ('id', 'magazine', 'magazine_info', 'articles_count', 'updated_at')
     readonly_fields = ('magazine_info', 'articles_count', 'created_at', 'updated_at')
 
+    @admin.display(description="Magazine Info")
     def magazine_info(self, obj):
         return obj.magazine_info()
 
+    @admin.display(description="Articles Count")
     def articles_count(self, obj):
         return obj.articles_count()
 

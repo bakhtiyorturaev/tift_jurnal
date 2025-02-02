@@ -1,5 +1,4 @@
 from django.db import models
-from django_ckeditor_5.fields import CKEditor5Field
 
 class EditorialMember(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True, verbose_name="To'liq ism-familiyasi")
@@ -15,7 +14,7 @@ class EditorialMember(models.Model):
         return self.name
 
 class EditorialStaff(models.Model):
-    content = CKEditor5Field(config_name='extends', verbose_name="Tahririyat a'zolari ro'yxati")
+    content = models.TextField(verbose_name="Tahririyat a'zolari ro'yxati")
 
     class Meta:
         verbose_name = 'Tahririyat Azolari'

@@ -29,7 +29,7 @@ Texnologiyalar
 Django 5.1.5
 Django Rest Framework
 PostgreSQL
-CKEditor 5
+TinyMCE
 Gunicorn
 Whitenoise
 Python 3.10 +

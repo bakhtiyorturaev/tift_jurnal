@@ -1,5 +1,4 @@
 from django.db import models
-from django_ckeditor_5.fields import CKEditor5Field
 
 class ArticlePreparationGuide(models.Model):
     upload_file = models.FileField(upload_to='Yuriqnoma/articles/', verbose_name="Yo'riqnoma fayli")
@@ -13,7 +12,7 @@ class ArticlePreparationGuide(models.Model):
 
 class SampleDoc(models.Model):
     title = models.CharField(max_length=255, verbose_name="namunaviy hujjat nomi")
-    content = CKEditor5Field(config_name='extends')
+    content = models.TextField(verbose_name='hujjat matni')
 
     class Meta:
         verbose_name = 'Namunaviy hujjat'
@@ -24,7 +23,7 @@ class SampleDoc(models.Model):
 
 class CopyRight(models.Model):
     title = models.CharField(max_length=200, verbose_name="Mualliflik huquqi nomi")
-    content = CKEditor5Field(config_name='extends')
+    content = models.TextField(verbose_name='mualliflik huquqi matni')
 
     class Meta:
         verbose_name = 'Mualliflik huquqi'

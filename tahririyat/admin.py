@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import EditorialMember, EditorialStaff, HonoraryForeignEditorialMember, ForeignEditorialMember
-
+from .forms import EditorialStaffForm
 
 @admin.register(EditorialMember)
 class EditorialBoardAdmin(admin.ModelAdmin):
@@ -9,6 +9,7 @@ class EditorialBoardAdmin(admin.ModelAdmin):
 
 @admin.register(EditorialStaff)
 class EditorialStaffAdmin(admin.ModelAdmin):
+    form = EditorialStaffForm
     list_display = ('id',)
 
 @admin.register(HonoraryForeignEditorialMember)

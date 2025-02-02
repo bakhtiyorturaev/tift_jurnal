@@ -19,7 +19,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 SECRET_ADMIN_URL = os.getenv('SECRET_ADMIN_URL')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['tift-jurnal.onrender.com', 'https://tift-jurnal.onrender.com', 'localhost', '127.0.0.1']
 
 # import dj_database_url
 # DATABASES = {
@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
     'drf_yasg',
-    'django_ckeditor_5',
+    'tinymce',
 
     'bosh_sahifa',
     'ilmiy_maktablarim',
@@ -149,7 +149,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 STATICFILES_DIRS =[ os.path.join(BASE_DIR, 'static'),
                     ]
-CKEDITOR_5_UPLOAD_PATH = "uploads/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -168,8 +167,5 @@ SWAGGER_SETTINGS = {
 }
 
 
-CKEDITOR_5_CUSTOM_CSS = '/staticfiles/django-ckeditor_5/src/override-django.css'
-
-from ckeditor_5_codes import CKEDITOR_5_CONFIGS, customColorPalette
-customColorPalette = customColorPalette
-CKEDITOR_5_CONFIGS = CKEDITOR_5_CONFIGS
+from tinymce_config import TINYMCE_DEFAULT_CONFIG
+TINYMCE_DEFAULT_CONFIG=TINYMCE_DEFAULT_CONFIG

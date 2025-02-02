@@ -1,10 +1,9 @@
 from django.db import models
 from bosh_sahifa.models import Magazine
-from django_ckeditor_5.fields import CKEditor5Field
 
 class AboutMagazine(models.Model):
     magazine = models.ForeignKey(to=Magazine, on_delete=models.CASCADE, verbose_name="Jurnal nomi")
-    bio = CKEditor5Field(config_name='extends', verbose_name="Jurnal haqida")
+    bio = models.TextField(verbose_name="Jurnal haqida")
 
     class Meta:
         verbose_name = 'Jurnal haqida'
@@ -31,7 +30,7 @@ class MagazineRequirements(models.Model):
     title = models.CharField(max_length=200,
                              help_text="Masalan: 'Jurnal nomi' elektron jurnalida maqola chop ettirish talablari",
                              verbose_name="jurnal talablari nomi")
-    content = CKEditor5Field(config_name='extends', blank=True, null=True, verbose_name="Jurnal talablari to'liq")
+    content = models.TextField(blank=True, null=True, verbose_name="Jurnal talablari to'liq")
 
     class Meta:
         verbose_name = 'Jurnal talablari'
@@ -41,7 +40,7 @@ class MagazineRequirements(models.Model):
         return self.title
 
 class MagazineArchive(models.Model):
-    content = CKEditor5Field(config_name='extends', verbose_name="Arxiv")
+    content = models.TextField(verbose_name="Arxiv")
     class Meta:
         verbose_name = 'Arxiv'
         verbose_name_plural = 'Jurnal arxivlari'

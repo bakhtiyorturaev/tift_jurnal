@@ -1,9 +1,11 @@
 from django.contrib import admin
+from .forms import AboutMagazineForm, MagazineArchiveForm, MagazineRequirementsForm
 from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive, Statistics
 
 
 @admin.register(AboutMagazine)
 class AboutMagazineAdmin(admin.ModelAdmin):
+    form = AboutMagazineForm
     list_display = ['magazine', 'bio']
     search_fields = ['magazine__name', ]
 
@@ -16,15 +18,18 @@ class MagazineNewsAdmin(admin.ModelAdmin):
 
 @admin.register(MagazineRequirements)
 class MagazineRequirementsAdmin(admin.ModelAdmin):
+    form = MagazineRequirementsForm
     list_display = ('id', 'title')
     search_fields = ('title', 'content')
     ordering = ('-id',)
 
 @admin.register(MagazineArchive)
 class MagazineArchiveAdmin(admin.ModelAdmin):
+    form = MagazineArchiveForm
     list_display = ('id',)
     search_fields = ('content',)
     ordering = ('-id',)
+
 @admin.register(Statistics)
 class StatisticsAdmin(admin.ModelAdmin):
     list_display = ('id', 'magazine', 'magazine_info', 'articles_count', 'updated_at')

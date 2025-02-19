@@ -1,4 +1,3 @@
-
 import os
 from pathlib import Path
 from dotenv import load_dotenv
@@ -19,28 +18,22 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 SECRET_ADMIN_URL = os.getenv('SECRET_ADMIN_URL')
 
-ALLOWED_HOSTS = ['tift-jurnal.onrender.com', 'https://tift-jurnal.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
-# import dj_database_url
-# DATABASES = {
-#     'default': dj_database_url.parse(os.getenv('DATABASES'))
-# }
-from urllib.parse import urlparse
-DATABASE_URL = os.getenv('DATABASES')
-
-# URLni tahlil qilish
-url = urlparse(DATABASE_URL)
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': url.path[1:],
-        'USER': url.username,
-        'PASSWORD': url.password,
-        'HOST': url.hostname,
-        'PORT': url.port,
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
+
+
 
 # Application definition
 
@@ -127,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uz'
 
 TIME_ZONE = 'UTC'
 
@@ -169,3 +162,9 @@ SWAGGER_SETTINGS = {
 
 from tinymce_config import TINYMCE_DEFAULT_CONFIG
 TINYMCE_DEFAULT_CONFIG=TINYMCE_DEFAULT_CONFIG
+
+# CSRF va XSS
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = False
+CSRF_TRUSTED_ORIGINS = ["https://tift-fintech.uz"]
+

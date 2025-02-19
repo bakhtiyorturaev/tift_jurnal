@@ -24,8 +24,8 @@ class MagazineArchiveSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class StatisticsSerializer(serializers.ModelSerializer):
-    magazine_info = serializers.CharField(source='magazine_info', read_only=True)
-    articles_count = serializers.IntegerField(source='articles_count', read_only=True)
+    magazine_info = serializers.CharField(read_only=True)
+    articles_count = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Statistics

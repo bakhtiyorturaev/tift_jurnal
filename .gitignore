@@ -7,13 +7,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
-<<<<<<< Updated upstream
-__pycache__
-=======
-__pycache__/
+
 *.pyc
-
-
 
 # C extensions
 *.so
@@ -137,4 +132,3 @@ ipython_config.py
 .Trashes
 ehthumbs.db
 Thumbs.db
-__pycache__/

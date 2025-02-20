@@ -65,7 +65,11 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.gzip.GZipMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+<<<<<<< HEAD
+#    'django.middleware.locale.LocaleMiddleware',
+=======
     # 'django.middleware.locale.LocaleMiddleware',
+>>>>>>> 8f189aaacf8688cea45818d83de3f657535f073f
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

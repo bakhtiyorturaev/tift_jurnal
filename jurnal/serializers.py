@@ -1,8 +1,10 @@
 from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive, Statistics
 from rest_framework import serializers
+from bosh_sahifa.serializers import MagazineSerializer
 
 
 class AboutMagazineSerializer(serializers.ModelSerializer):
+    magazine = MagazineSerializer()
     class Meta:
         model = AboutMagazine
         fields = '__all__'

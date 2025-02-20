@@ -5,13 +5,13 @@ from .serializers import EditorialBoardSerializer, EditorialStaffSerializer, Hon
     ForeignEditorialMemberSerializer
 
 
-class EditorialBoardViewSet(viewsets.ViewSet):
+class EditorialBoardViewSet(viewsets.ModelViewSet):
     queryset = EditorialMember.objects.all()
     serializer_class = EditorialBoardSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 
-class EditorialStaffViewSet(viewsets.ViewSet):
+class EditorialStaffViewSet(viewsets.ModelViewSet):
     queryset = EditorialStaff.objects.all()
     serializer_class = EditorialStaffSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]

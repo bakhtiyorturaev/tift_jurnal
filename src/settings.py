@@ -38,6 +38,7 @@ DATABASES = {
 # Application definition
 
 INSTALLED_APPS = [
+
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'drf_yasg',
     'tinymce',
+    'corsheaders',
 
     'bosh_sahifa',
     'ilmiy_maktablarim',
@@ -57,10 +59,11 @@ INSTALLED_APPS = [
     'jurnal',
     'mualliflarga',
     'tahririyat',
-
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.gzip.GZipMiddleware',
@@ -72,6 +75,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",  # Frontend uchun
+    "https://tift-fintech.uz",  # Backend uchun
+]
+
+#CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_HEADERS = True
+CORS_EXPOSE_HEADERS = ['*']
 
 
 ROOT_URLCONF = 'src.urls'

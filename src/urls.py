@@ -20,6 +20,7 @@ schema_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
+
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path(settings.SECRET_ADMIN_URL, admin.site.urls),

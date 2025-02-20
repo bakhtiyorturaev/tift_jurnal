@@ -7,7 +7,7 @@ class Magazine(models.Model):
     name_en = models.CharField(max_length=200, verbose_name='Jurnal nomi (EN)', blank=True, null=True)
     cover_image = models.ImageField(upload_to='bosh_sahifa/jurnal/jurnal_rasmi', verbose_name='Jurnal old muqovasi rasmi')
     image_2 = models.ImageField(upload_to='bosh_sahifa/jurnal/jurnal_rasmi', verbose_name="Jurnal orqa muqovasi rasmi")
-    which_number = models.CharField(max_length=50, verbose_name='Jurnal soni')
+    which_number = models.CharField(max_length=50, verbose_name='Jurnal soni', help_text='Namuna: 1-son | 01.2025')
     slug = models.SlugField(unique=True, verbose_name='Slug', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Kiritilgan sana')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Yangilangan sana')

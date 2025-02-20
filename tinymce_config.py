@@ -1,4 +1,3 @@
-
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
     'width': 800,
@@ -7,19 +6,16 @@ TINYMCE_DEFAULT_CONFIG = {
     'selector': 'textarea',
     'theme': 'silver',
     'plugins': '''
-        advlist autolink lists link charmap anchor preview wordcount
+        advlist autolink lists link charmap print preview anchor
+        searchreplace visualblocks insertdatetime table paste
     ''',
     'toolbar1': '''
-        undo redo | bold italic underline | fontselect,
-        fontsizeselect | forecolor backcolor | alignleft alignright |
-        aligncenter alignjustify | indent outdent | bullist numlist |
-        link | preview
+        undo redo | formatselect | bold italic underline strikethrough |
+        forecolor backcolor | alignleft aligncenter alignright alignjustify |
+        bullist numlist outdent indent | preview fullscreen
     ''',
-    'toolbar2': '''
-        visualblocks visualchars |
-        charmap anchor | code |
-    ''',
-    'contextmenu': 'formats | link image',
-    'menubar': False,
+    'contextmenu': 'formats',
+    'menubar': True,
     'statusbar': True,
 }
+

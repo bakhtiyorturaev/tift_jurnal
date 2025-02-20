@@ -10,10 +10,10 @@ class ArticlePreparationGuideAdmin(admin.ModelAdmin):
 @admin.register(SampleDoc)
 class SampleDocumentAdmin(admin.ModelAdmin):
     form = SampleDocForm
-    list_display = ('id', 'title',)
+    list_display = ('id', 'title_uz',)
     search_fields = ('title',)
 
 @admin.register(CopyRight)
 class CopyrightAdmin(admin.ModelAdmin):
     form = CopyRightForm
-    list_display = ('id', 'title',)
+    list_display = ('id', 'title_uz',)

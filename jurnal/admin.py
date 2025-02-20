@@ -6,28 +6,28 @@ from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineA
 @admin.register(AboutMagazine)
 class AboutMagazineAdmin(admin.ModelAdmin):
     form = AboutMagazineForm
-    list_display = ['magazine', 'bio']
-    search_fields = ['magazine__name', ]
+    list_display = ['magazine', 'bio_uz']
+    search_fields = ['magazine__name_uz', ]
 
 @admin.register(MagazineNews)
 class MagazineNewsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'magazine', 'title', 'link')
+    list_display = ('id', 'magazine', 'title_uz', 'link')
     list_filter = ('magazine',)
-    search_fields = ('title', 'content')
+    search_fields = ('title_uz', 'content_uz')
     ordering = ('-id',)
 
 @admin.register(MagazineRequirements)
 class MagazineRequirementsAdmin(admin.ModelAdmin):
     form = MagazineRequirementsForm
-    list_display = ('id', 'title')
-    search_fields = ('title', 'content')
+    list_display = ('id', 'title_uz')
+    search_fields = ('title_uz', 'content_uz')
     ordering = ('-id',)
 
 @admin.register(MagazineArchive)
 class MagazineArchiveAdmin(admin.ModelAdmin):
     form = MagazineArchiveForm
     list_display = ('id',)
-    search_fields = ('content',)
+    search_fields = ('content_uz',)
     ordering = ('-id',)
 
 @admin.register(Statistics)

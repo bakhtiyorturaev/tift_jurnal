@@ -3,7 +3,6 @@ certifi
 charset-normalizer
 coreapi
 coreschema
-dj-database-url
 Django
 django-jazzmin
 django-js-asset

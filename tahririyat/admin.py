@@ -4,8 +4,8 @@ from .forms import EditorialStaffForm
 
 @admin.register(EditorialMember)
 class EditorialBoardAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'title_1',)
-    search_fields = ('name', 'title_1',)
+    list_display = ('id', 'name', 'title_1_uz',)
+    search_fields = ('name', 'title_1_uz',)
 
 @admin.register(EditorialStaff)
 class EditorialStaffAdmin(admin.ModelAdmin):

@@ -13,6 +13,6 @@ class IlmiyMaktablarimForm(forms.ModelForm):
 @admin.register(IlmiyMaktablarim)
 class IlmiyMaktablarimAdmin(admin.ModelAdmin):
     form = IlmiyMaktablarimForm
-    list_display = ['name', 'academic_degree']
-    search_fields = ['name', 'academic_degree']
+    list_display = ['name', 'academic_degree_uz']
+    search_fields = ['name', 'academic_degree_uz']
 

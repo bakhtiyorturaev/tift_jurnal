@@ -6,11 +6,18 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import Magazine, Article, ArticleAuthor, ArticleCategories
 from .serializers import MagazineSerializer, ArticleSerializer, ArticleAuthorSerializer, ArticleCategoriesSerializer
+from rest_framework.response import Response
 
 class MagazineViewSet(ModelViewSet):
     queryset = Magazine.objects.all()
     serializer_class = MagazineSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+    @action(detail=False, methods=['get'], url_path='slug/(?P<slug>[^/.]+)')
+    def get_by_slug(self, request, slug=None):
+        magazine = get_object_or_404(Magazine, slug=slug)
+        serializer = self.get_serializer(magazine)
+        return Response(serializer.data)
 
 class ArticleViewSet(ModelViewSet):
     queryset = Article.objects.all()

@@ -3,16 +3,15 @@ from tinymce.widgets import TinyMCE
 
 from .models import AboutMagazine, MagazineRequirements, MagazineArchive
 
-
 class AboutMagazineForm(forms.ModelForm):
-    bio = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
-
     class Meta:
         model = AboutMagazine
         fields = '__all__'
-        labels = {
-            'bio': 'Jurnal haqida'
+        widgets = {
+            field: TinyMCE(attrs={'cols': 80, 'rows': 30}) 
+            for field in ['bio_uz', 'bio_ru', 'bio_en']
         }
+
 
 class MagazineRequirementsForm(forms.ModelForm):
     content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))

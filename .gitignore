@@ -7,14 +7,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
-<<<<<<< Updated upstream
-__pycache__
-=======
-__pycache__/
 *.pyc
 
 
->>>>>>> Stashed changes
 # C extensions
 *.so
 

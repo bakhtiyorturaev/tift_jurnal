@@ -11,7 +11,7 @@ class Magazine(models.Model):
     slug = models.SlugField(unique=True, verbose_name='Slug', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Kiritilgan sana')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Yangilangan sana')
-    upload_file_uz = models.FileField(upload_to='bosh_sahifa/jurnal/uz', verbose_name='Jurnal faylini yuklash (UZ)')
+    upload_file_uz = models.FileField(upload_to='bosh_sahifa/jurnal/uz', verbose_name='Jurnal faylini yuklash (UZ)', blank=True, null=True)
     upload_file_ru = models.FileField(upload_to='bosh_sahifa/jurnal/ru', verbose_name='Jurnal faylini yuklash (RU)', blank=True, null=True)
     upload_file_en = models.FileField(upload_to='bosh_sahifa/jurnal/en', verbose_name='Jurnal faylini yuklash (RU)', blank=True, null=True)
 
@@ -61,7 +61,7 @@ class Article(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Kiritilgan sana')
     category = models.ForeignKey(ArticleCategories, on_delete=models.SET_NULL, null=True, verbose_name='Kategoriya')
     author = models.ForeignKey(ArticleAuthor, on_delete=models.CASCADE, related_name='articles', verbose_name='Muallifi')
-    upload_file_uz = models.FileField(upload_to="bosh_sahifa/maqolalar/uz", verbose_name="Maqola fayli (UZ)")
+    upload_file_uz = models.FileField(upload_to="bosh_sahifa/maqolalar/uz", verbose_name="Maqola fayli (UZ)", blank=True, null=True)
     upload_file_ru = models.FileField(upload_to="bosh_sahifa/maqolalar/ru", verbose_name="Maqola fayli (RU)", blank=True, null=True)
     upload_file_en = models.FileField(upload_to="bosh_sahifa/maqolalar/en", verbose_name="Maqola fayli (EN)", blank=True, null=True)
 

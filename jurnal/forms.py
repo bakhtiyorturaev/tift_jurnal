@@ -12,7 +12,6 @@ class AboutMagazineForm(forms.ModelForm):
             for field in ['bio_uz', 'bio_ru', 'bio_en']
         }
 
-
 class MagazineRequirementsForm(forms.ModelForm):
     content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
 

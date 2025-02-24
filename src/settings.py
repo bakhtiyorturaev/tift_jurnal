@@ -76,13 +76,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+APPEND_SLASH = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",  # Frontend uchun
-    "https://tift-fintech.uz",  # Backend uchun
+    "http://localhost:8080",
+    "https://tift-fintech.uz",
 ]
 
-#CORS_ALLOW_ALL_ORIGINS = True
+
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_HEADERS = True
 CORS_EXPOSE_HEADERS = ['*']
@@ -152,12 +153,13 @@ USE_L10N = False
 if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # static fayllarni yig'ish joyi
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-STATICFILES_DIRS =[ os.path.join(BASE_DIR, 'static'),
-                    ]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Media fayllarni saqlash joyi
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]  # qo'shimcha statik fayllar joyi
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -180,7 +182,12 @@ from tinymce_config import TINYMCE_DEFAULT_CONFIG
 TINYMCE_DEFAULT_CONFIG=TINYMCE_DEFAULT_CONFIG
 
 # CSRF va XSS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = False
-CSRF_TRUSTED_ORIGINS = ["https://tift-fintech.uz"]
+SECURE_SSL_REDIRECT = True
+CSRF_TRUSTED_ORIGINS = ["https://back.tift-fintech.uz",
+                        #"http://back.tift-fintech.uz",
+                        "https://tift-fintech.uz",
+]
 

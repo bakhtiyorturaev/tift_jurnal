@@ -1,6 +1,8 @@
 .env
 .venv
-
+staticfiles
+static
+media
 
 
  # Byte-compiled / optimized / DLL files

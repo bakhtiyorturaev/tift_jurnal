@@ -79,14 +79,11 @@ MIDDLEWARE = [
 APPEND_SLASH = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
     "https://tift-fintech.uz",
 ]
 
-
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_ALL_HEADERS = True
-CORS_EXPOSE_HEADERS = ['*']
+
 
 
 ROOT_URLCONF = 'src.urls'
@@ -187,7 +184,6 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
 CSRF_TRUSTED_ORIGINS = ["https://back.tift-fintech.uz",
-                        #"http://back.tift-fintech.uz",
                         "https://tift-fintech.uz",
 ]
 

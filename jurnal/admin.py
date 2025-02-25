@@ -19,14 +19,14 @@ class MagazineNewsAdmin(admin.ModelAdmin):
 @admin.register(MagazineRequirements)
 class MagazineRequirementsAdmin(admin.ModelAdmin):
     form = MagazineRequirementsForm
-    list_display = ('id', 'title_uz')
-    search_fields = ('title_uz', 'content_uz')
+    list_display = ('id', 'title_uz', 'title_ru', 'title_en')
+    search_fields = ('title_uz', 'title_ru', 'title_en')
     ordering = ('-id',)
 
 @admin.register(MagazineArchive)
 class MagazineArchiveAdmin(admin.ModelAdmin):
     form = MagazineArchiveForm
-    list_display = ('id',)
+    list_display = ('id', "content_uz")
     search_fields = ('content_uz',)
     ordering = ('-id',)
 

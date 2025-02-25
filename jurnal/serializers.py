@@ -1,3 +1,4 @@
+from bosh_sahifa.serializers import MagazineSerializer
 from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive, Statistics
 from rest_framework import serializers
 from bosh_sahifa.serializers import MagazineSerializer

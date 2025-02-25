@@ -1,10 +1,6 @@
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
     'width': 800,
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 20,
-    'selector': 'textarea',
-    'theme': 'silver',
     'plugins': '''
         advlist autolink lists link charmap print preview anchor
         searchreplace visualblocks insertdatetime table paste
@@ -18,4 +14,5 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': True,
     'statusbar': True,
 }
+
 

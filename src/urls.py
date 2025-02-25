@@ -31,6 +31,7 @@ urlpatterns = [
 # Barcha app URL-lari uchun til kodi boshida ko‘rsatiladi
 urlpatterns += i18n_patterns(
     path('', include('bosh_sahifa.urls')),
+    path('core/', include('core.urls')),
     path('ilmiy/', include('ilmiy_maktablarim.urls')),
     path('contacts/', include('contacts.urls')),
     path('jurnal/', include('jurnal.urls')),

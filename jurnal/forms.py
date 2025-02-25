@@ -13,22 +13,20 @@ class AboutMagazineForm(forms.ModelForm):
         }
 
 class MagazineRequirementsForm(forms.ModelForm):
-    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+    content_uz = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Jurnal talablari to'liq (UZ)")
+    content_ru = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Jurnal talablari to'liq (RU)", required=False)
+    content_en = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Jurnal talablari to'liq (EN)", required=False)
 
     class Meta:
         model = MagazineRequirements
         fields = '__all__'
-        labels = {
-            'content': 'Jurnal talablari to\'liq'
-        }
+
 
 class MagazineArchiveForm(forms.ModelForm):
-    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+    content_uz = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Arxiv (UZ)")
+    content_ru = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Arxiv (RU)", required=False)
+    content_en = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Arxiv (EN)", required=False)
 
     class Meta:
         model = MagazineArchive
         fields = '__all__'
-        labels = {
-            'content': 'Arxiv'
-        }
-

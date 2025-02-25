@@ -22,8 +22,6 @@ python manage.py migrate
 5.
 python manage.py createsuperuser
 
-6.
-python manage.py createsuperuser
 
 Texnologiyalar
 Django 5.1.5

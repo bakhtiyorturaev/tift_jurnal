@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'jurnal',
     'mualliflarga',
     'tahririyat',
+    'core',
+
 ]
 
 MIDDLEWARE = [
@@ -69,6 +71,7 @@ MIDDLEWARE = [
     'django.middleware.gzip.GZipMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

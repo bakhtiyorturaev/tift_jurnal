@@ -1,21 +1,18 @@
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
     'width': 800,
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 20,
-    'selector': 'textarea',
-    'theme': 'silver',
     'plugins': '''
-        advlist autolink lists link charmap print preview anchor
-        searchreplace visualblocks insertdatetime table paste
+        advlist autolink lists link image imagetools charmap print preview anchor
+        searchreplace visualblocks insertdatetime media table paste help wordcount
     ''',
     'toolbar1': '''
-        undo redo | formatselect | bold italic underline strikethrough |
-        forecolor backcolor | alignleft aligncenter alignright alignjustify |
-        bullist numlist outdent indent | preview fullscreen
+        undo redo | formatselect fontsizeselect | bold italic underline |
+        alignleft aligncenter alignright alignjustify | bullist numlist |
+        link image media | preview code fullscreen
     ''',
-    'contextmenu': 'formats',
-    'menubar': True,
-    'statusbar': True,
-}
+    'images_upload_url': '/core/upload-image/',  # ✅ Umumiy rasm yuklash URL
+    'automatic_uploads': True,
+    'file_picker_types': 'image',
+    'images_reuse_filename': True,
 
+}

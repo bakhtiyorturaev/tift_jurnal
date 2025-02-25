@@ -10,7 +10,7 @@ class EditorialBoardAdmin(admin.ModelAdmin):
 @admin.register(EditorialStaff)
 class EditorialStaffAdmin(admin.ModelAdmin):
     form = EditorialStaffForm
-    list_display = ('id',)
+    list_display = ['__str__']
 
 @admin.register(HonoraryForeignEditorialMember)
 class HonoraryForeignEditorialMemberAdmin(admin.ModelAdmin):

@@ -1,10 +1,13 @@
 .env
 .venv
-
+staticfiles
+static
+media
 
 
  # Byte-compiled / optimized / DLL files
 __pycache__/
+*.pyo
 *.py[cod]
 *$py.class
 

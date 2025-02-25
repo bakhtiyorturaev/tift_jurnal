@@ -30,5 +30,6 @@ uritemplate
 urllib3
 whitenoise
 
+
 django-tinymce
 django-cors-headers

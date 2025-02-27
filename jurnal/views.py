@@ -28,7 +28,7 @@ class MagazinePagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 20  # Maksimal sahifa hajmi
 
-class MagazineArchiveListView(ListAPIView):
+class MagazineArchiveViewSet(viewsets.ModelViewSet):
     queryset = MagazineArchive.objects.all().order_by('-id')  # So'nggi yozuvlar birinchi
     serializer_class = MagazineArchiveSerializer
     pagination_class = MagazinePagination

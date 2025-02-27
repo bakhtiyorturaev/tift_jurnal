@@ -26,6 +26,7 @@ class MagazineRequirementsAdmin(admin.ModelAdmin):
 @admin.register(MagazineArchive)
 class MagazineArchiveAdmin(admin.ModelAdmin):
     form = MagazineArchiveForm
+    readonly_fields = ("magazine_urls",)  # Faqat ko‘rinadigan qilish
     list_display = ('id', "content_uz")
     search_fields = ('content_uz',)
     ordering = ('-id',)

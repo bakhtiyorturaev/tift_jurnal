@@ -8,7 +8,7 @@ class Magazine(models.Model):
     cover_image = models.ImageField(upload_to='bosh_sahifa/jurnal/jurnal_rasmi', verbose_name='Jurnal old muqovasi rasmi')
     image_2 = models.ImageField(upload_to='bosh_sahifa/jurnal/jurnal_rasmi', verbose_name="Jurnal orqa muqovasi rasmi")
     which_number = models.CharField(max_length=50, verbose_name='Jurnal soni', help_text='Namuna: 1-son | 01.2025')
-    slug = models.SlugField(unique=True, verbose_name='Slug', blank=True)
+    slug = models.SlugField(unique=True, verbose_name='Slug', help_text='Namuna: 1-son-01-2025-yil')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Kiritilgan sana')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Yangilangan sana')
     upload_file_uz = models.FileField(upload_to='bosh_sahifa/jurnal/uz', verbose_name='Jurnal faylini yuklash (UZ)', blank=True, null=True)

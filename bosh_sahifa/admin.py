@@ -5,6 +5,13 @@ from .models import Magazine, Article, ArticleAuthor, ArticleCategories
 class MagazineAdmin(admin.ModelAdmin):
     list_display = ('name_uz', 'which_number', 'created_at')
     search_fields = ('name_uz', 'created_at')
+    prepopulated_fields = {}
+
+    def save_model(self, request, obj, form, change):
+        if not obj.slug:
+            from django.core.exceptions import ValidationError
+            raise ValidationError("Slugni kiritish majburiy!")
+        super().save_model(request, obj, form, change)
 
 
 @admin.register(Article)

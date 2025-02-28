@@ -1,11 +1,12 @@
 from django.contrib import admin
 from .models import ArticlePreparationGuide, SampleDoc, CopyRight
-from .forms import SampleDocForm, CopyRightForm
+from .forms import SampleDocForm, CopyRightForm, ArticlePreparationGuideForm
 
 @admin.register(ArticlePreparationGuide)
 class ArticlePreparationGuideAdmin(admin.ModelAdmin):
-    list_display = ('id', 'upload_file_uz',)
-    search_fields = ('upload_file_uz',)
+    form = ArticlePreparationGuideForm
+    list_display = ['id']
+    search_fields = ['yuriqnoma_uz', 'yuriqnoma_ru', 'yuriqnoma_en']
 
 @admin.register(SampleDoc)
 class SampleDocumentAdmin(admin.ModelAdmin):

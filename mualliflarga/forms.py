@@ -1,7 +1,15 @@
 from django import forms
 from tinymce.widgets import TinyMCE
-from .models import SampleDoc, CopyRight
+from .models import SampleDoc, CopyRight, ArticlePreparationGuide
 
+class ArticlePreparationGuideForm(forms.ModelForm):
+    class Meta:
+        model = ArticlePreparationGuide
+        fields = '__all__'
+        widgets = {
+            field: TinyMCE(attrs={'cols': 80, 'rows': 30})
+            for field in ['yuriqnoma_uz', 'yuriqnoma_ru', 'yuriqnoma_en']
+        }
 class SampleDocForm(forms.ModelForm):
     content_uz = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Hujjat matni (UZ)")
     content_ru = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Hujjat matni (RU)", required=False)

@@ -1,9 +1,9 @@
 from django.db import models
 
 class ArticlePreparationGuide(models.Model):
-    upload_file_uz = models.FileField(upload_to="Yuriqnoma/articles/uz/", verbose_name="Yo'riqnoma fayli (UZ)", blank=True, null=True)
-    upload_file_ru = models.FileField(upload_to="Yuriqnoma/articles/ru/", verbose_name="Yo'riqnoma fayli (RU)", blank=True, null=True)
-    upload_file_en = models.FileField(upload_to="Yuriqnoma/articles/en/", verbose_name="Yo'riqnoma fayli (EN)", blank=True, null=True)
+    yuriqnoma_uz = models.TextField(verbose_name="Yo'riqnoma (UZ)", blank=True, null=True)
+    yuriqnoma_ru = models.TextField(verbose_name="Yo'riqnoma (RU)", blank=True, null=True)
+    yuriqnoma_en = models.TextField(verbose_name="Yo'riqnoma (EN)", blank=True, null=True)
 
     class Meta:
         verbose_name = 'Maqola yo\'riqnomasi'

@@ -6,7 +6,7 @@ from .models import AboutMagazine, MagazineNews, MagazineRequirements, Statistic
 @admin.register(AboutMagazine)
 class AboutMagazineAdmin(admin.ModelAdmin):
     form = AboutMagazineForm
-    list_display = ['get_magazine_uz', 'bio_uz']
+    list_display = ["magazine_uz" ,'bio_uz']
     search_fields = ['magazine__name_uz', ]
 
 

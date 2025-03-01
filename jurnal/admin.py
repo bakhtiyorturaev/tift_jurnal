@@ -8,6 +8,8 @@ class AboutMagazineAdmin(admin.ModelAdmin):
     form = AboutMagazineForm
     list_display = ['magazine', 'bio_uz']
     search_fields = ['magazine__name_uz', ]
+    readonly_fields = ['magazine_urls']  # Faqat ko‘rsatish uchun
+
 
 @admin.register(MagazineNews)
 class MagazineNewsAdmin(admin.ModelAdmin):

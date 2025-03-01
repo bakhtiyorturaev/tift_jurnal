@@ -35,12 +35,15 @@ class ArticleViewSet(ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     @action(detail=True, methods=['get'])
-    def view_article_or_download(self, pk):
+    def view_article_or_download(self, request, pk=None):
+        """
+        Maqolani ko'rish yoki PDF faylni yuklab olish uchun funksiya.
+        """
         article = get_object_or_404(Article, pk=pk)
-        pdf_file = article.pdf_file
+        pdf_file = article.upload_file_uz  # Modeldagi fayl maydoni
 
         response = FileResponse(pdf_file)
-        response['Content-Disposition'] = f'inline; filename={article.title}.pdf'
+        response['Content-Disposition'] = f'inline; filename="{article.name_uz}.pdf"'
         return response
 
 class ArticleAuthorViewSet(ReadOnlyModelViewSet):

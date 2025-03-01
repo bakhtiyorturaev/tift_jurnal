@@ -19,19 +19,19 @@ class ArticleAuthorSerializer(serializers.ModelSerializer):
 
 
 class ArticleSerializer(serializers.ModelSerializer):
+    author = ArticleAuthorSerializer(read_only=True)
     view_article_or_download = serializers.SerializerMethodField()
 
     class Meta:
         model = Article
-        fields = ["id", "name_uz", "upload_file_uz", "view_article_or_download"]
+        fields = ["id", "name_uz", "upload_file_uz", "view_article_or_download", "author"]
 
     def get_view_article_or_download(self, obj):
-        """
-        Maqolani yuklab olish yoki ko‘rish URL'sini yaratish.
-        """
         request = self.context.get('request')
         if request:
-            return request.build_absolute_uri(reverse('article-view-article-or-download', args=[obj.pk]))
+            return request.build_absolute_uri(
+                reverse('article-view-article-or-download', args=[obj.pk])
+            )
         return None
 
 class ArticleCategoriesSerializer(serializers.ModelSerializer):

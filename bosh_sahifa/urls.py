@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import MagazineViewSet, ArticleViewSet, ArticleAuthorViewSet, ArticleCategoriesViewSet, upload_file, ConferenceViewSet
+from .views import MagazineViewSet, ArticleViewSet, ArticleAuthorViewSet, ArticleCategoriesViewSet, ConferenceViewSet
 
 router = DefaultRouter()
 router.register(r'conferences', ConferenceViewSet)  # /api/conferences/
@@ -11,5 +11,5 @@ router.register(r'article-categories', ArticleCategoriesViewSet, basename='artic
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api/magazine/<int:pk>/articles/', MagazineViewSet.as_view({'get': 'get_articles'})),
-]
+    path('api/article-categories/by-magazine/<int:magazine_id>/',
+         ArticleCategoriesViewSet.as_view({'get': 'get_by_magazine'})),]

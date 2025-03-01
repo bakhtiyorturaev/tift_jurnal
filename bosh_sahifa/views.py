@@ -58,18 +58,26 @@ class ArticleCategoriesViewSet(ReadOnlyModelViewSet):
     """
     Maqola kategoriyalari va ularning ichidagi maqolalar ro‘yxati.
     """
-    queryset = ArticleCategories.objects.prefetch_related("article_set__author")  # ✅ Mualliflarni oldindan chaqiramiz
+    queryset = ArticleCategories.objects.prefetch_related("article_set__author")
     serializer_class = ArticleCategoriesSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     @action(detail=False, methods=['get'], url_path='by-magazine/(?P<magazine_id>\d+)')
     def get_by_magazine(self, request, magazine_id=None):
         """
-        Berilgan `magazine_id` bo‘yicha kategoriyalar va maqolalarni olish.
+        Berilgan `magazine_id` bo‘yicha jurnal ma'lumotlari, kategoriyalar va maqolalarni olish.
         """
+        magazine = get_object_or_404(Magazine, id=magazine_id)  # Jurnalni olish
         categories = ArticleCategories.objects.filter(magazine_id=magazine_id).prefetch_related("article_set__author")
-        serializer = self.get_serializer(categories, many=True)
-        return Response(serializer.data)
+
+        magazine_serializer = MagazineSerializer(magazine)
+        category_serializer = ArticleCategoriesSerializer(categories, many=True, context={'request': request})
+
+        return Response({
+            "magazine": magazine_serializer.data,  # 📌 Jurnal haqida ma'lumot
+            "categories": category_serializer.data  # 📌 Jurnalga tegishli kategoriyalar va maqolalar
+        })
+
 def upload_file(request):
     if request.method == 'POST':
         file = request.FILES.get('upload')  # Yuklangan fayl

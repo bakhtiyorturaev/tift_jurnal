@@ -1,11 +1,5 @@
 from rest_framework import serializers
-from .models import EditorialMember, EditorialStaff, HonoraryForeignEditorialMember, ForeignEditorialMember
-
-
-class EditorialBoardSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = EditorialMember
-        fields = '__all__'
+from .models import EditorialStaff, HonoraryForeignEditorialMember, ForeignEditorialMember
 
 
 class EditorialStaffSerializer(serializers.ModelSerializer):

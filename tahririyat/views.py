@@ -1,15 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from .models import EditorialMember, EditorialStaff, HonoraryForeignEditorialMember, ForeignEditorialMember
-from .serializers import EditorialBoardSerializer, EditorialStaffSerializer, HonoraryForeignEditorialMemberSerializer, \
+from .models import EditorialStaff, HonoraryForeignEditorialMember, ForeignEditorialMember
+from .serializers import EditorialStaffSerializer, HonoraryForeignEditorialMemberSerializer, \
     ForeignEditorialMemberSerializer
-
-
-class EditorialBoardViewSet(viewsets.ModelViewSet):
-    queryset = EditorialMember.objects.all()
-    serializer_class = EditorialBoardSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-
 
 class EditorialStaffViewSet(viewsets.ModelViewSet):
     queryset = EditorialStaff.objects.all()

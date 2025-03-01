@@ -7,7 +7,7 @@ class AboutMagazine(models.Model):
         to="bosh_sahifa.Magazine",
         on_delete=models.CASCADE,
         verbose_name="Jurnal nomi (UZ)",
-        related_name="name_uz",
+        related_name="about_magazine_uz",
         blank=True,
         null=True
     )
@@ -15,7 +15,7 @@ class AboutMagazine(models.Model):
         to="bosh_sahifa.Magazine",
         on_delete=models.CASCADE,
         verbose_name="Jurnal nomi (RU)",
-        related_name="name_ru",
+        related_name="about_magazine_ru",
         blank=True,
         null=True
     )
@@ -23,7 +23,7 @@ class AboutMagazine(models.Model):
         to="bosh_sahifa.Magazine",
         on_delete=models.CASCADE,
         verbose_name="Jurnal nomi (EN)",
-        related_name="name_en",
+        related_name="about_magazine_en",
         blank=True,
         null=True
     )

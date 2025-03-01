@@ -24,7 +24,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ["id", "name_uz", "upload_file_uz", "view_article_or_download", "author"]
+        fields = ["id", "name_uz", "name_ru", "name_en", "upload_file_uz", "upload_file_ru", "upload_file_en","view_article_or_download", "author"]
 
     def get_view_article_or_download(self, obj):
         request = self.context.get('request')

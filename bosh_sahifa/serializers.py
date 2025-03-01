@@ -1,3 +1,4 @@
+from django.urls import reverse
 from .models import Magazine, Article, ArticleAuthor, ArticleCategories, Conference
 from rest_framework import serializers
 ##

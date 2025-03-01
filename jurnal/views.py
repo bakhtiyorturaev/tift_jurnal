@@ -8,7 +8,7 @@ from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineA
 from .serializers import AboutMagazineSerializer, MagazineNewsSerializer, MagazineRequirementsSerializer, \
     MagazineArchiveSerializer, StatisticsSerializer
 
-class AboutMagazineViewSet(viewsets.ModelViewSet):
+class AboutMagazineViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = AboutMagazine.objects.all()
     serializer_class = AboutMagazineSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]

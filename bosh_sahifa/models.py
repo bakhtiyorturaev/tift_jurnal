@@ -1,6 +1,18 @@
 from django.db import models
 from django.utils.text import slugify
+##
+class Conference(models.Model):
+    link=models.URLField(max_length=200)
+    description =models.TextField(verbose_name="Konferensiya")
+    created_at = models.DateTimeField(auto_now_add=True)  # Qo'shilgan sana
+    updated_at = models.DateTimeField(auto_now=True)  # Yangilangan sana
 
+    class Meta:
+        verbose_name_plural = 'Konferensiya'
+
+    def __str__(self):
+        return "konferensiya"
+##
 class Magazine(models.Model):
     name_uz = models.CharField(max_length=200, verbose_name='Jurnal nomi (UZ)')
     name_ru = models.CharField(max_length=200, verbose_name='Jurnal nomi (RU)', blank=True, null=True)

@@ -78,10 +78,31 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+# olinib tashlanadi
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',  # 🔓 API hamma uchun ochiq bo‘ladi
+    ],
+}
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8080",
+]
+CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+CORS_ALLOW_HEADERS = [
+    "Authorization",
+    "Content-Type",
+    "X-Requested-With",
+    "Accept",
+    "Origin",
+    "User-Agent",
+]
+#olinib tashlanadi
 APPEND_SLASH = True
 
 CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
     "https://tift-fintech.uz",
 ]
 
@@ -189,4 +210,3 @@ SECURE_SSL_REDIRECT = True
 CSRF_TRUSTED_ORIGINS = ["https://back.tift-fintech.uz",
                         "https://tift-fintech.uz",
 ]
-

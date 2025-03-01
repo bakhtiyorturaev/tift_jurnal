@@ -1,6 +1,14 @@
 from django.contrib import admin
 from .models import Magazine, Article, ArticleAuthor, ArticleCategories
 
+##
+from .forms import ConferenceForm
+from .models import Conference
+@admin.register(Conference)
+class ConferenceAdmin(admin.ModelAdmin):
+    form = ConferenceForm
+    list_display = ('description', 'link')
+##
 @admin.register(Magazine)
 class MagazineAdmin(admin.ModelAdmin):
     list_display = ('name_uz', 'which_number', 'created_at')

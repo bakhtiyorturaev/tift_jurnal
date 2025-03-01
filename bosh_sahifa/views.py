@@ -2,13 +2,23 @@ from django.http import FileResponse, JsonResponse
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import Magazine, Article, ArticleAuthor, ArticleCategories
 from .serializers import MagazineSerializer, ArticleSerializer, ArticleAuthorSerializer, ArticleCategoriesSerializer
 from rest_framework.response import Response
+##
+from rest_framework.viewsets import ReadOnlyModelViewSet
+from .models import Conference
+from .serializers import ConferenceSerializer
 
-class MagazineViewSet(ModelViewSet):
+class ConferenceViewSet(ReadOnlyModelViewSet):  # ❗ Faqat GET (List va Retrieve)
+    queryset = Conference.objects.all()
+    serializer_class = ConferenceSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+##
+class MagazineViewSet(ReadOnlyModelViewSet):
     queryset = Magazine.objects.all()
     serializer_class = MagazineSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
@@ -33,12 +43,12 @@ class ArticleViewSet(ModelViewSet):
         response['Content-Disposition'] = f'inline; filename={article.title}.pdf'
         return response
 
-class ArticleAuthorViewSet(ModelViewSet):
+class ArticleAuthorViewSet(ReadOnlyModelViewSet):
     queryset = ArticleAuthor.objects.all()
     serializer_class = ArticleAuthorSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-class ArticleCategoriesViewSet(ModelViewSet):
+class ArticleCategoriesViewSet(ReadOnlyModelViewSet):
     queryset = ArticleCategories.objects.all()
     serializer_class = ArticleCategoriesSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]

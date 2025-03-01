@@ -1,7 +1,7 @@
 from django import forms
 from tinymce.widgets import TinyMCE
 
-from .models import AboutMagazine, MagazineRequirements, MagazineArchive
+from .models import AboutMagazine, MagazineRequirements
 
 class AboutMagazineForm(forms.ModelForm):
     class Meta:
@@ -21,12 +21,3 @@ class MagazineRequirementsForm(forms.ModelForm):
         model = MagazineRequirements
         fields = '__all__'
 
-
-class MagazineArchiveForm(forms.ModelForm):
-    content_uz = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Arxiv (UZ)")
-    content_ru = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Arxiv (RU)", required=False)
-    content_en = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Arxiv (EN)", required=False)
-
-    class Meta:
-        model = MagazineArchive
-        fields = '__all__'

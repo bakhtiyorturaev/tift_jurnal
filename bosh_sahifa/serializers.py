@@ -39,7 +39,8 @@ class ArticleSerializer(serializers.ModelSerializer):
         """
         request = self.context.get('request')
         if request:
-            return request.build_absolute_uri(reverse('article-view_article_or_download', args=[obj.pk]))
+            return request.build_absolute_uri(
+                reverse('article-view-article-or-download', args=[obj.pk]))
         return None
 
     class Meta:

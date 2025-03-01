@@ -9,7 +9,7 @@ class AboutMagazine(models.Model):
         verbose_name="Jurnal nomi"
     )
 
-    name_uz = models.CharField(max_length=255, verbose_name="Jurnal nomi (UZ)")
+    name_uz = models.CharField(max_length=255, verbose_name="Jurnal nomi (UZ)", blank=True, null=True)
     name_ru = models.CharField(max_length=255, verbose_name="Jurnal nomi (RU)", blank=True, null=True)
     name_en = models.CharField(max_length=255, verbose_name="Jurnal nomi (EN)", blank=True, null=True)
 

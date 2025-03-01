@@ -5,7 +5,7 @@ from .models import AboutMagazine, MagazineNews, MagazineRequirements, Statistic
 
 @admin.register(AboutMagazine)
 class AboutMagazineAdmin(admin.ModelAdmin):
-    list_display = ["name", "language"]
+    list_display = ["name_uz", "language"]
     list_filter = ["language"]
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):

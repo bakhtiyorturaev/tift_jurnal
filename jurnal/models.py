@@ -9,7 +9,7 @@ class AboutMagazine(models.Model):
         ("en", "Inglizcha"),
     ]
 
-    name = models.ForeignKey(
+    name_uz = models.ForeignKey(
         to="bosh_sahifa.Magazine",
         on_delete=models.CASCADE,
         verbose_name="Jurnal nomi",

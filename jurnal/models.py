@@ -18,8 +18,9 @@ class AboutMagazine(models.Model):
 
     language = models.CharField(
         max_length=2,
-        choices=LANGUAGE_CHOICES,
-        verbose_name="Til"
+        choices=[("uz", "O‘zbekcha"), ("ru", "Ruscha"), ("en", "Inglizcha")],
+        verbose_name="Til",
+        default="uz"
     )
 
     bio_uz = models.TextField(verbose_name="Jurnal haqida (UZ)", blank=True, null=True)

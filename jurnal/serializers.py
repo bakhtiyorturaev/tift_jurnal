@@ -1,5 +1,4 @@
-from bosh_sahifa.serializers import MagazineSerializer
-from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive, Statistics
+from .models import AboutMagazine, MagazineNews, MagazineRequirements, Statistics
 from rest_framework import serializers
 from bosh_sahifa.serializers import MagazineSerializer
 
@@ -21,10 +20,6 @@ class MagazineRequirementsSerializer(serializers.ModelSerializer):
         model = MagazineRequirements
         fields = '__all__'
 
-class MagazineArchiveSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MagazineArchive
-        fields = '__all__'
 
 class StatisticsSerializer(serializers.ModelSerializer):
     magazine_info = serializers.CharField(read_only=True)

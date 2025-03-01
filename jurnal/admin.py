@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .forms import AboutMagazineForm, MagazineArchiveForm, MagazineRequirementsForm
-from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive, Statistics
+from .models import AboutMagazine, MagazineNews, MagazineRequirements, Statistics
 
 
 @admin.register(AboutMagazine)
@@ -25,13 +25,6 @@ class MagazineRequirementsAdmin(admin.ModelAdmin):
     search_fields = ('title_uz', 'title_ru', 'title_en')
     ordering = ('-id',)
 
-@admin.register(MagazineArchive)
-class MagazineArchiveAdmin(admin.ModelAdmin):
-    form = MagazineArchiveForm
-    readonly_fields = ("magazine_urls",)  # Faqat ko‘rinadigan qilish
-    list_display = ('id', "content_uz")
-    search_fields = ('content_uz',)
-    ordering = ('-id',)
 
 @admin.register(Statistics)
 class StatisticsAdmin(admin.ModelAdmin):

@@ -51,30 +51,6 @@ class MagazineRequirements(models.Model):
     def __str__(self):
         return self.title_uz
 
-class MagazineArchive(models.Model):
-    content_uz = models.TextField(verbose_name="Arxiv (UZ)")
-    content_ru = models.TextField(verbose_name="Arxiv (RU)", blank=True, null=True)
-    content_en = models.TextField(verbose_name="Arxiv (EN)", blank=True, null=True)
-
-    class Meta:
-        verbose_name = "Arxiv"
-        verbose_name_plural = "Jurnal arxivlari"
-
-    def __str__(self):
-        return "Archive"
-
-    def magazine_urls(self):
-        """Jurnallar sluglarini to‘liq URL ko‘rinishida chiqaradi"""
-        from bosh_sahifa.models import Magazine  # Importni ichkariga olish
-
-        base_url = "https://tift-fintech.uz/jurnal/magazine-archives/"
-        slugs = Magazine.objects.values_list("slug", flat=True)
-
-        full_urls = [f"{base_url}{slug}" for slug in slugs]
-        return "\n".join(full_urls)
-
-    magazine_urls.short_description = "Jurnallar To‘liq URL'lari"
-
 
 class Statistics(models.Model):
     magazine = models.OneToOneField(Magazine, on_delete=models.CASCADE, blank=True, null=True, related_name='statistics', verbose_name="Jurnal")

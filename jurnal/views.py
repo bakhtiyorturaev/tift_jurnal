@@ -1,10 +1,9 @@
 from rest_framework import viewsets
-from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from .models import AboutMagazine, MagazineNews, MagazineRequirements, MagazineArchive, Statistics
+from .models import AboutMagazine, MagazineNews, MagazineRequirements, Statistics
 from .serializers import AboutMagazineSerializer, MagazineNewsSerializer, MagazineRequirementsSerializer, \
      StatisticsSerializer
 

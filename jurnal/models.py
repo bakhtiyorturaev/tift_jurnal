@@ -4,7 +4,7 @@ from bosh_sahifa.models import Magazine
 
 class AboutMagazine(models.Model):
     magazine_uz = models.ForeignKey(
-        to="Magazine",
+        to="bosh_sahifa.Magazine",
         on_delete=models.CASCADE,
         verbose_name="Jurnal nomi (UZ)",
         related_name="name_uz",
@@ -12,7 +12,7 @@ class AboutMagazine(models.Model):
         null=True
     )
     magazine_ru = models.ForeignKey(
-        to="Magazine",
+        to="bosh_sahifa.Magazine",
         on_delete=models.CASCADE,
         verbose_name="Jurnal nomi (RU)",
         related_name="name_ru",
@@ -20,7 +20,7 @@ class AboutMagazine(models.Model):
         null=True
     )
     magazine_en = models.ForeignKey(
-        to="Magazine",
+        to="bosh_sahifa.Magazine",
         on_delete=models.CASCADE,
         verbose_name="Jurnal nomi (EN)",
         related_name="name_en",

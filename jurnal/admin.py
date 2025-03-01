@@ -5,9 +5,29 @@ from .models import AboutMagazine, MagazineNews, MagazineRequirements, Statistic
 
 @admin.register(AboutMagazine)
 class AboutMagazineAdmin(admin.ModelAdmin):
-    form = AboutMagazineForm
-    list_display = ["magazine_uz" ,'bio_uz']
-    search_fields = ['magazine__name_uz', ]
+    list_display = ["magazine", "language"]
+    list_filter = ["language"]
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        """Jurnal tanlashda faqat mos keladigan tildagi jurnallarni chiqarish"""
+        if db_field.name == "magazine":
+            lang = request.GET.get("language")
+            if lang:
+                kwargs["queryset"] = AboutMagazine(language=lang).get_filtered_magazines()
+
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+    def get_fields(self, request, obj=None):
+        """Tanlangan tilga qarab maydonlarni moslashtirish"""
+        fields = ["magazine", "language"]
+        if obj:
+            if obj.language == "uz":
+                fields += ["bio_uz", "file_uz"]
+            elif obj.language == "ru":
+                fields += ["bio_ru", "file_ru"]
+            elif obj.language == "en":
+                fields += ["bio_en", "file_en"]
+        return fields
 
 
 

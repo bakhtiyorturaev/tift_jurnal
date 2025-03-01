@@ -3,45 +3,52 @@ from bosh_sahifa.models import Magazine
 
 
 class AboutMagazine(models.Model):
-    magazine_uz = models.ForeignKey(
+    LANGUAGE_CHOICES = [
+        ("uz", "O‘zbekcha"),
+        ("ru", "Ruscha"),
+        ("en", "Inglizcha"),
+    ]
+
+    name = models.ForeignKey(
         to="bosh_sahifa.Magazine",
         on_delete=models.CASCADE,
-        verbose_name="Jurnal nomi (UZ)",
-        related_name="about_magazine_uz",
-        blank=True,
-        null=True
+        verbose_name="Jurnal nomi",
+        related_name="about_magazine"
     )
-    magazine_ru = models.ForeignKey(
-        to="bosh_sahifa.Magazine",
-        on_delete=models.CASCADE,
-        verbose_name="Jurnal nomi (RU)",
-        related_name="about_magazine_ru",
-        blank=True,
-        null=True
-    )
-    magazine_en = models.ForeignKey(
-        to="bosh_sahifa.Magazine",
-        on_delete=models.CASCADE,
-        verbose_name="Jurnal nomi (EN)",
-        related_name="about_magazine_en",
-        blank=True,
-        null=True
+
+    language = models.CharField(
+        max_length=2,
+        choices=LANGUAGE_CHOICES,
+        verbose_name="Til"
     )
 
     bio_uz = models.TextField(verbose_name="Jurnal haqida (UZ)", blank=True, null=True)
     bio_ru = models.TextField(verbose_name="Jurnal haqida (RU)", blank=True, null=True)
     bio_en = models.TextField(verbose_name="Jurnal haqida (EN)", blank=True, null=True)
 
-    file_uz = models.FileField(upload_to='jurnal_haqida_fayl/uz/', verbose_name="Fayl (UZ)", blank=True, null=True)
-    file_ru = models.FileField(upload_to='jurnal_haqida_fayl/ru/', verbose_name="Fayl (RU)", blank=True, null=True)
-    file_en = models.FileField(upload_to='jurnal_haqida_fayl/en/', verbose_name="Fayl (EN)", blank=True, null=True)
+    file_uz = models.FileField(upload_to="bosh_sahifa/jurnal/about/uz", verbose_name="Jurnal fayli (UZ)", blank=True,
+                               null=True)
+    file_ru = models.FileField(upload_to="bosh_sahifa/jurnal/about/ru", verbose_name="Jurnal fayli (RU)", blank=True,
+                               null=True)
+    file_en = models.FileField(upload_to="bosh_sahifa/jurnal/about/en", verbose_name="Jurnal fayli (EN)", blank=True,
+                               null=True)
 
     def __str__(self):
-        return f"{self.magazine_uz or self.magazine_ru or self.magazine_en} haqida"
+        return f"{self.get_language_display()} - {self.magazine}"
 
     class Meta:
         verbose_name = "Jurnal haqida"
-        verbose_name_plural = "Jurnal haqida"
+        verbose_name_plural = "Jurnallar haqida"
+
+    def get_filtered_magazines(self):
+        """Tanlangan tilga qarab faqat mos keladigan jurnallarni qaytaradi"""
+        if self.language == "uz":
+            return Magazine.objects.uzbek()
+        elif self.language == "ru":
+            return Magazine.objects.russian()
+        elif self.language == "en":
+            return Magazine.objects.english()
+        return Magazine.objects.none()
 
 
 class MagazineNews(models.Model):

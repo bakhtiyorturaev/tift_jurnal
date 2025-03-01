@@ -2,7 +2,7 @@ from django.http import FileResponse, JsonResponse
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
-from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import Magazine, Article, ArticleAuthor, ArticleCategories
 from .serializers import MagazineSerializer, ArticleSerializer, ArticleAuthorSerializer, ArticleCategoriesSerializer
@@ -23,10 +23,13 @@ class MagazineViewSet(ReadOnlyModelViewSet):
     serializer_class = MagazineSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    @action(detail=False, methods=['get'], url_path='slug/(?P<slug>[^/.]+)')
-    def get_by_slug(self, request, slug=None):
-        magazine = get_object_or_404(Magazine, slug=slug)
-        serializer = self.get_serializer(magazine)
+    @action(detail=True, methods=['get'], url_path='articles')
+    def get_articles(self, request, pk=None):
+        """
+        Berilgan `magazine_id` bo‘yicha maqolalar va ularning kategoriyalarini olish.
+        """
+        articles = Article.objects.filter(magazine_id=pk).select_related("category", "author")
+        serializer = ArticleSerializer(articles, many=True, context={'request': request})
         return Response(serializer.data)
 
 class ArticleViewSet(ModelViewSet):
@@ -52,10 +55,21 @@ class ArticleAuthorViewSet(ReadOnlyModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 class ArticleCategoriesViewSet(ReadOnlyModelViewSet):
-    queryset = ArticleCategories.objects.all()
+    """
+    Maqola kategoriyalari va ularning ichidagi maqolalar ro‘yxati.
+    """
+    queryset = ArticleCategories.objects.prefetch_related("article_set__author")  # ✅ Mualliflarni oldindan chaqiramiz
     serializer_class = ArticleCategoriesSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    @action(detail=False, methods=['get'], url_path='by-magazine/(?P<magazine_id>\d+)')
+    def get_by_magazine(self, request, magazine_id=None):
+        """
+        Berilgan `magazine_id` bo‘yicha kategoriyalar va maqolalarni olish.
+        """
+        categories = ArticleCategories.objects.filter(magazine_id=magazine_id).prefetch_related("article_set__author")
+        serializer = self.get_serializer(categories, many=True)
+        return Response(serializer.data)
 def upload_file(request):
     if request.method == 'POST':
         file = request.FILES.get('upload')  # Yuklangan fayl

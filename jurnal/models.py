@@ -14,7 +14,9 @@ class AboutMagazine(models.Model):
     bio_uz = models.TextField(verbose_name="Jurnal haqida (UZ)", null=True, blank=True)
     bio_ru = models.TextField(verbose_name="Jurnal haqida (RU)", blank=True, null=True)
     bio_en = models.TextField(verbose_name="Jurnal haqida (EN)", blank=True, null=True)
-    file = models.FileField(upload_to='jurnal_haqida_fayl/', verbose_name="fayl", blank=True, null=True)
+    file_uz = models.FileField(upload_to='jurnal_haqida_fayl/', verbose_name="fayl", blank=True, null=True)
+    file_ru = models.FileField(upload_to='jurnal_haqida_fayl/', verbose_name="Fayl (RU)", blank=True, null=True)
+    file_en = models.FileField(upload_to='jurnal_haqida_fayl/', verbose_name="Fayl (EN)", blank=True, null=True)
 
     class Meta:
         verbose_name = "Jurnal haqida"

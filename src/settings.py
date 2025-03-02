@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security settings
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG')
+DEBUG = False
 SECRET_ADMIN_URL = os.getenv('SECRET_ADMIN_URL')
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')

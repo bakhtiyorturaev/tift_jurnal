@@ -5,9 +5,12 @@ from bosh_sahifa.models import Magazine
 class AboutMagazine(models.Model):
     magazine = models.ForeignKey(to=Magazine, on_delete=models.CASCADE, verbose_name="Jurnal", null=True, blank=True)
 
-    magazine_name_uz = models.CharField(max_length=255, verbose_name="Jurnal nomi (UZ)", blank=True, null=True)
-    magazine_name_ru = models.CharField(max_length=255, verbose_name="Jurnal nomi (RU)", blank=True, null=True)
-    magazine_name_en = models.CharField(max_length=255, verbose_name="Jurnal nomi (EN)", blank=True, null=True)
+    magazine_name_uz = models.CharField(max_length=255, verbose_name="Jurnal nomi (UZ)", blank=True, null=True,
+                                        help_text="✅ Bu maydon avtomatik ravishda tanlanadi.")
+    magazine_name_ru = models.CharField(max_length=255, verbose_name="Jurnal nomi (RU)", blank=True, null=True,
+                                        help_text="✅ Bu maydon avtomatik ravishda tanlanadi.")
+    magazine_name_en = models.CharField(max_length=255, verbose_name="Jurnal nomi (EN)", blank=True, null=True,
+                                        help_text="✅ Bu maydon avtomatik ravishda tanlanadi.")
 
     bio_uz = models.TextField(verbose_name="Jurnal haqida (UZ)", blank=True, null=True)
     bio_ru = models.TextField(verbose_name="Jurnal haqida (RU)", blank=True, null=True)

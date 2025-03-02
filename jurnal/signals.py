@@ -16,7 +16,7 @@ def create_or_update_statistics(sender, instance, created, **kwargs):
 @receiver(post_save, sender=Magazine)
 def update_about_magazine(sender, instance, **kwargs):
     AboutMagazine.objects.filter(magazine=instance).update(
-        magazine_name_uz=instance.name_uz,
-        magazine_name_ru=instance.name_ru,
-        magazine_name_en=instance.name_en
+        name_uz=instance.name_uz,
+        name_ru=instance.name_ru,
+        name_en=instance.name_en
     )

@@ -6,11 +6,11 @@ from .models import AboutMagazine, MagazineNews, MagazineRequirements, Statistic
 @admin.register(AboutMagazine)
 class AboutMagazineAdmin(admin.ModelAdmin):
     form = AboutMagazineForm
-    fields = ('magazine', 'magazine_name_uz', 'magazine_name_ru', 'magazine_name_en',
+    fields = ('magazine', 'name_uz', 'name_ru', 'name_en',
               'bio_uz', 'bio_ru', 'bio_en',
               'file_uz', 'file_ru', 'file_en')
-    readonly_fields = ('magazine_name_uz', 'magazine_name_ru', 'magazine_name_en')
-    list_display = ('magazine', 'magazine_name_uz', 'magazine_name_ru', 'magazine_name_en')
+    readonly_fields = ('name_uz', 'name_ru', 'name_en')
+    list_display = ('magazine', 'name_uz', 'name_ru', 'name_en')
 
 @admin.register(MagazineNews)
 class MagazineNewsAdmin(admin.ModelAdmin):

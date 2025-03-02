@@ -5,11 +5,11 @@ from bosh_sahifa.models import Magazine
 class AboutMagazine(models.Model):
     magazine = models.ForeignKey(to=Magazine, on_delete=models.CASCADE, verbose_name="Jurnal", null=True, blank=True)
 
-    magazine_name_uz = models.CharField(max_length=255, verbose_name="Jurnal nomi (UZ)", blank=True, null=True,
+    name_uz = models.CharField(max_length=255, verbose_name="Jurnal nomi (UZ)", blank=True, null=True,
                                         help_text="✅ Bu maydon avtomatik ravishda tanlanadi.")
-    magazine_name_ru = models.CharField(max_length=255, verbose_name="Jurnal nomi (RU)", blank=True, null=True,
+    name_ru = models.CharField(max_length=255, verbose_name="Jurnal nomi (RU)", blank=True, null=True,
                                         help_text="✅ Bu maydon avtomatik ravishda tanlanadi.")
-    magazine_name_en = models.CharField(max_length=255, verbose_name="Jurnal nomi (EN)", blank=True, null=True,
+    name_en = models.CharField(max_length=255, verbose_name="Jurnal nomi (EN)", blank=True, null=True,
                                         help_text="✅ Bu maydon avtomatik ravishda tanlanadi.")
 
     bio_uz = models.TextField(verbose_name="Jurnal haqida (UZ)", blank=True, null=True)
@@ -26,13 +26,13 @@ class AboutMagazine(models.Model):
 
     def save(self, *args, **kwargs):
         if self.magazine:
-            self.magazine_name_uz = self.magazine.name_uz
-            self.magazine_name_ru = self.magazine.name_ru
-            self.magazine_name_en = self.magazine.name_en
+            self.name_uz = self.magazine.name_uz
+            self.name_ru = self.magazine.name_ru
+            self.name_en = self.magazine.name_en
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.magazine_name_uz or 'Noma\'lum jurnal'} - haqida"
+        return f"{self.name_uz or 'Noma\'lum jurnal'} - haqida"
 
 
 class MagazineNews(models.Model):

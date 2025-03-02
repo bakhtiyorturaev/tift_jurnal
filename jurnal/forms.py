@@ -14,9 +14,13 @@ class AboutMagazineForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['magazine_name_uz'].help_text = "✅ Bu maydon avtomatik ravishda tanlanadi."
-        self.fields['magazine_name_ru'].help_text = "✅ Bu maydon avtomatik ravishda tanlanadi."
-        self.fields['magazine_name_en'].help_text = "✅ Bu maydon avtomatik ravishda tanlanadi."
+        # Maydon mavjudligini tekshirib, help_text qo'shamiz
+        if 'magazine_name_uz' in self.fields:
+            self.fields['magazine_name_uz'].help_text = "✅ Bu maydon avtomatik ravishda tanlanadi."
+        if 'magazine_name_ru' in self.fields:
+            self.fields['magazine_name_ru'].help_text = "✅ Bu maydon avtomatik ravishda tanlanadi."
+        if 'magazine_name_en' in self.fields:
+            self.fields['magazine_name_en'].help_text = "✅ Bu maydon avtomatik ravishda tanlanadi."
 
 class MagazineRequirementsForm(forms.ModelForm):
     content_uz = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Jurnal talablari to'liq (UZ)")

@@ -7,6 +7,8 @@ class AboutMagazine(models.Model):
         to=Magazine,
         on_delete=models.CASCADE,
         verbose_name="Jurnal nomi",
+        blank=True,
+        null=True
     )
 
     bio_uz = models.TextField(verbose_name="Jurnal haqida (UZ)", null=True, blank=True)

@@ -3,24 +3,10 @@ from .forms import AboutMagazineForm, MagazineRequirementsForm
 from .models import AboutMagazine, MagazineNews, MagazineRequirements, Statistics
 
 
-from django.contrib import admin
-from .models import AboutMagazine
-
 @admin.register(AboutMagazine)
 class AboutMagazineAdmin(admin.ModelAdmin):
-    list_display = ('get_magazine_name_uz', 'get_magazine_name_ru', 'get_magazine_name_en')
-
-    def get_magazine_name_uz(self, obj):
-        return obj.magazine.name_uz if obj.magazine else "Noma'lum"
-    get_magazine_name_uz.short_description = "Jurnal nomi (UZ)"
-
-    def get_magazine_name_ru(self, obj):
-        return obj.magazine.name_ru if obj.magazine else "Noma'lum"
-    get_magazine_name_ru.short_description = "Jurnal nomi (RU)"
-
-    def get_magazine_name_en(self, obj):
-        return obj.magazine.name_en if obj.magazine else "Noma'lum"
-    get_magazine_name_en.short_description = "Jurnal nomi (EN)"
+    form = AboutMagazineForm
+    list_display = ('magazine', 'magazine_name_uz', 'magazine_name_ru', 'magazine_name_en')
 
 
 

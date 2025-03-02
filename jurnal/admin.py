@@ -6,6 +6,7 @@ from .models import AboutMagazine, MagazineNews, MagazineRequirements, Statistic
 @admin.register(AboutMagazine)
 class AboutMagazineAdmin(admin.ModelAdmin):
     form = AboutMagazineForm
+    readonly_fields = ('magazine_name_uz', 'magazine_name_ru', 'magazine_name_en')
     list_display = ('magazine', 'magazine_name_uz', 'magazine_name_ru', 'magazine_name_en')
 
 

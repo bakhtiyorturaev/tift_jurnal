@@ -3,53 +3,19 @@ from bosh_sahifa.models import Magazine
 
 
 class AboutMagazine(models.Model):
-    LANGUAGE_CHOICES = [
-        ("uz", "O‘zbekcha"),
-        ("ru", "Ruscha"),
-        ("en", "Inglizcha"),
-    ]
-
-    name_uz = models.ForeignKey(
-        to="bosh_sahifa.Magazine",
-        on_delete=models.CASCADE,
-        verbose_name="Jurnal nomi",
-        related_name="about_magazine"
-    )
-
-    language = models.CharField(
-        max_length=2,
-        choices=[("uz", "O‘zbekcha"), ("ru", "Ruscha"), ("en", "Inglizcha")],
-        verbose_name="Til",
-        default="uz"
-    )
-
-    bio_uz = models.TextField(verbose_name="Jurnal haqida (UZ)", blank=True, null=True)
+    magazine = models.ForeignKey(to=Magazine, on_delete=models.CASCADE, verbose_name="Jurnal nomi", null=True, blank=True)
+    bio_uz = models.TextField(verbose_name="Jurnal haqida (UZ)", null=True, blank=True)
     bio_ru = models.TextField(verbose_name="Jurnal haqida (RU)", blank=True, null=True)
     bio_en = models.TextField(verbose_name="Jurnal haqida (EN)", blank=True, null=True)
-
-    file_uz = models.FileField(upload_to="bosh_sahifa/jurnal/about/uz", verbose_name="Jurnal fayli (UZ)", blank=True,
-                               null=True)
-    file_ru = models.FileField(upload_to="bosh_sahifa/jurnal/about/ru", verbose_name="Jurnal fayli (RU)", blank=True,
-                               null=True)
-    file_en = models.FileField(upload_to="bosh_sahifa/jurnal/about/en", verbose_name="Jurnal fayli (EN)", blank=True,
-                               null=True)
-
-    def __str__(self):
-        return f"{self.get_language_display()} - {self.magazine}"
+    file = models.FileField(upload_to='jurnal_haqida_fayl/', verbose_name="fayl", blank=True, null=True)
 
     class Meta:
         verbose_name = "Jurnal haqida"
-        verbose_name_plural = "Jurnallar haqida"
+        verbose_name_plural = "Jurnal haqida"
 
-    def get_filtered_magazines(self):
-        """Tanlangan tilga qarab faqat mos keladigan jurnallarni qaytaradi"""
-        if self.language == "uz":
-            return Magazine.objects.uzbek()
-        elif self.language == "ru":
-            return Magazine.objects.russian()
-        elif self.language == "en":
-            return Magazine.objects.english()
-        return Magazine.objects.none()
+    def __str__(self):
+        return f"{self.magazine.name_uz if self.magazine else 'Noma\'lum jurnal'} - haqida"
+
 
 
 class MagazineNews(models.Model):

@@ -12,13 +12,6 @@ class AboutMagazineAdmin(admin.ModelAdmin):
     readonly_fields = ('magazine_name_uz', 'magazine_name_ru', 'magazine_name_en')
     list_display = ('magazine', 'magazine_name_uz', 'magazine_name_ru', 'magazine_name_en')
 
-    def get_form(self, request, obj=None, **kwargs):
-        form = super().get_form(request, obj, **kwargs)
-        form.base_fields['magazine_name_uz'].help_text = "✅ Bu maydon avtomatik ravishda tanlanadi."
-        form.base_fields['magazine_name_ru'].help_text = "✅ Bu maydon avtomatik ravishda tanlanadi."
-        form.base_fields['magazine_name_en'].help_text = "✅ Bu maydon avtomatik ravishda tanlanadi."
-        return form
-
 @admin.register(MagazineNews)
 class MagazineNewsAdmin(admin.ModelAdmin):
     list_display = ('id', 'magazine', 'title_uz', 'link')

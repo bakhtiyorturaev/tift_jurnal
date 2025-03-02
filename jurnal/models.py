@@ -3,7 +3,12 @@ from bosh_sahifa.models import Magazine
 
 
 class AboutMagazine(models.Model):
-    magazine = models.ForeignKey(to=Magazine, on_delete=models.CASCADE, verbose_name="Jurnal nomi", null=True, blank=True)
+    magazine = models.ForeignKey(
+        to=Magazine,
+        on_delete=models.CASCADE,
+        verbose_name="Jurnal nomi",
+    )
+
     bio_uz = models.TextField(verbose_name="Jurnal haqida (UZ)", null=True, blank=True)
     bio_ru = models.TextField(verbose_name="Jurnal haqida (RU)", blank=True, null=True)
     bio_en = models.TextField(verbose_name="Jurnal haqida (EN)", blank=True, null=True)
@@ -14,7 +19,19 @@ class AboutMagazine(models.Model):
         verbose_name_plural = "Jurnal haqida"
 
     def __str__(self):
-        return f"{self.magazine.name_uz if self.magazine else 'Noma\'lum jurnal'} - haqida"
+        return f"{self.magazine.name_uz} | {self.magazine.name_ru} | {self.magazine.name_en} - haqida"
+
+    @property
+    def magazine_name_uz(self):
+        return self.magazine.name_uz if self.magazine else "Noma'lum jurnal"
+
+    @property
+    def magazine_name_ru(self):
+        return self.magazine.name_ru if self.magazine else "Неизвестный журнал"
+
+    @property
+    def magazine_name_en(self):
+        return self.magazine.name_en if self.magazine else "Unknown Journal"
 
 
 

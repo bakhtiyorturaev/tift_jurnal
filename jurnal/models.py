@@ -3,18 +3,17 @@ from bosh_sahifa.models import Magazine
 
 
 class AboutMagazine(models.Model):
-    magazine = models.ForeignKey(
-        to=Magazine,
-        on_delete=models.CASCADE,
-        verbose_name="Jurnal nomi",
-        blank=True,
-        null=True
-    )
+    magazine = models.ForeignKey(to=Magazine, on_delete=models.CASCADE, verbose_name="Jurnal", null=True, blank=True)
 
-    bio_uz = models.TextField(verbose_name="Jurnal haqida (UZ)", null=True, blank=True)
+    magazine_name_uz = models.CharField(max_length=255, verbose_name="Jurnal nomi (UZ)", blank=True, null=True)
+    magazine_name_ru = models.CharField(max_length=255, verbose_name="Jurnal nomi (RU)", blank=True, null=True)
+    magazine_name_en = models.CharField(max_length=255, verbose_name="Jurnal nomi (EN)", blank=True, null=True)
+
+    bio_uz = models.TextField(verbose_name="Jurnal haqida (UZ)", blank=True, null=True)
     bio_ru = models.TextField(verbose_name="Jurnal haqida (RU)", blank=True, null=True)
     bio_en = models.TextField(verbose_name="Jurnal haqida (EN)", blank=True, null=True)
-    file_uz = models.FileField(upload_to='jurnal_haqida_fayl/', verbose_name="fayl", blank=True, null=True)
+
+    file_uz = models.FileField(upload_to='jurnal_haqida_fayl/', verbose_name="Fayl (UZ)", blank=True, null=True)
     file_ru = models.FileField(upload_to='jurnal_haqida_fayl/', verbose_name="Fayl (RU)", blank=True, null=True)
     file_en = models.FileField(upload_to='jurnal_haqida_fayl/', verbose_name="Fayl (EN)", blank=True, null=True)
 
@@ -22,21 +21,15 @@ class AboutMagazine(models.Model):
         verbose_name = "Jurnal haqida"
         verbose_name_plural = "Jurnal haqida"
 
+    def save(self, *args, **kwargs):
+        if self.magazine:
+            self.magazine_name_uz = self.magazine.name_uz
+            self.magazine_name_ru = self.magazine.name_ru
+            self.magazine_name_en = self.magazine.name_en
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return f"{self.magazine.name_uz} | {self.magazine.name_ru} | {self.magazine.name_en} - haqida"
-
-    @property
-    def magazine_name_uz(self):
-        return self.magazine.name_uz if self.magazine else "Noma'lum jurnal"
-
-    @property
-    def magazine_name_ru(self):
-        return self.magazine.name_ru if self.magazine else "Неизвестный журнал"
-
-    @property
-    def magazine_name_en(self):
-        return self.magazine.name_en if self.magazine else "Unknown Journal"
-
+        return f"{self.magazine_name_uz or 'Noma\'lum jurnal'} - haqida"
 
 
 class MagazineNews(models.Model):

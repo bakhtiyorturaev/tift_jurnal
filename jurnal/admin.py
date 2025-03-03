@@ -19,12 +19,12 @@ class MagazineNewsAdmin(admin.ModelAdmin):
     search_fields = ('title_uz', 'content_uz')
     ordering = ('-id',)
 
-@admin.register(MagazineRequirements)
-class MagazineRequirementsAdmin(admin.ModelAdmin):
-    form = MagazineRequirementsForm
-    list_display = ('id', 'title_uz', 'title_ru', 'title_en')
-    search_fields = ('title_uz', 'title_ru', 'title_en')
-    ordering = ('-id',)
+# @admin.register(MagazineRequirements)
+# class MagazineRequirementsAdmin(admin.ModelAdmin):
+#     form = MagazineRequirementsForm
+#     list_display = ('id', 'title_uz', 'title_ru', 'title_en')
+#     search_fields = ('title_uz', 'title_ru', 'title_en')
+#     ordering = ('-id',)
 
 
 @admin.register(Statistics)

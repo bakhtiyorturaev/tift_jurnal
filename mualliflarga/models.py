@@ -6,11 +6,11 @@ class ArticlePreparationGuide(models.Model):
     yuriqnoma_en = models.TextField(verbose_name="Yo'riqnoma (EN)", blank=True, null=True)
 
     class Meta:
-        verbose_name = 'Maqola yo\'riqnomasi'
-        verbose_name_plural = 'Maqolalar yo\'riqnomasi'
+        verbose_name = 'Maqola tayyorlash bo\'yicha talablar'
+        verbose_name_plural = 'Maqola tayyorlash bo\'yicha talablar'
 
     def __str__(self):
-        return "Maqola Yo'riqnomasi"
+        return "Maqola tayyorlash bo\'yicha talablar"
 
 
 class SampleDoc(models.Model):

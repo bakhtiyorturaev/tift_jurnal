@@ -6,14 +6,14 @@ from .forms import EditorialStaffForm
 class EditorialStaffAdmin(admin.ModelAdmin):
     form = EditorialStaffForm
     list_display = ['__str__']
-
-@admin.register(HonoraryForeignEditorialMember)
-class HonoraryForeignEditorialMemberAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name',)
-    search_fields = ('name',)
-
-
-@admin.register(ForeignEditorialMember)
-class ForeignEditorialMemberAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name',)
-    search_fields = ('name',)
+#
+# @admin.register(HonoraryForeignEditorialMember)
+# class HonoraryForeignEditorialMemberAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'name',)
+#     search_fields = ('name',)
+#
+#
+# @admin.register(ForeignEditorialMember)
+# class ForeignEditorialMemberAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'name',)
+#     search_fields = ('name',)

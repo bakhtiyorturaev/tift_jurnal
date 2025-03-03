@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .forms import AboutMagazineForm, MagazineRequirementsForm
+from .forms import AboutMagazineForm#, MagazineRequirementsForm
 from .models import AboutMagazine, MagazineNews, MagazineRequirements, Statistics
 
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .forms import AboutMagazineForm#, MagazineRequirementsForm
+from .forms import AboutMagazineForm, MagazineNewsForm  # , MagazineRequirementsForm
 from .models import AboutMagazine, MagazineNews, MagazineRequirements, Statistics
 
 
@@ -14,6 +14,7 @@ class AboutMagazineAdmin(admin.ModelAdmin):
 
 @admin.register(MagazineNews)
 class MagazineNewsAdmin(admin.ModelAdmin):
+    form = MagazineNewsForm
     list_display = ('id', 'magazine', 'title_uz', 'link')
     list_filter = ('magazine',)
     search_fields = ('title_uz', 'content_uz')

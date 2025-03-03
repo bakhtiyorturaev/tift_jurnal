@@ -18,6 +18,7 @@ class MagazineNewsAdmin(admin.ModelAdmin):
     list_filter = ('magazine',)
     search_fields = ('title_uz', 'content_uz')
     ordering = ('-id',)
+    exclude = ('news_image',)  # Ushbu maydon admin panelda ko'rinmaydi
 
 # @admin.register(MagazineRequirements)
 # class MagazineRequirementsAdmin(admin.ModelAdmin):

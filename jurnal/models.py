@@ -37,16 +37,19 @@ class AboutMagazine(models.Model):
 
 class MagazineNews(models.Model):
     magazine = models.ForeignKey(to=Magazine, on_delete=models.CASCADE, verbose_name="Jurnal nomi")
-    title_uz = models.CharField(max_length=500, verbose_name="Yangilik nomi (UZ)")
+    title_uz = models.CharField(max_length=500, verbose_name="Yangilik nomi (UZ)", blank=True, null=True)
     title_ru = models.CharField(max_length=500, verbose_name="Yangilik nomi (RU)", blank=True, null=True)
     title_en = models.CharField(max_length=500, verbose_name="Yangilik nomi (EN)", blank=True, null=True)
 
-    content_uz = models.TextField(verbose_name="Yangilik haqida (UZ)")
+    content_uz = models.TextField(verbose_name="Yangilik haqida (UZ)", blank=True, null=True)
     content_ru = models.TextField(verbose_name="Yangilik haqida (RU)", blank=True, null=True)
     content_en = models.TextField(verbose_name="Yangilik haqida (EN)", blank=True, null=True)
+    news_file = models.FileField(upload_to='jurnal/news', help_text="Agar yangilik haqida fayl mavjud bo'lsa",
+                                 blank=True, null=True)
 
-    image = models.ImageField(upload_to='jurnal/news', blank=True, null=True, verbose_name="Rasm")
-    link = models.URLField(blank=True, null=True, verbose_name="Havola")
+    news_image = models.ImageField(upload_to='jurnal/news', blank=True, null=True, verbose_name="Rasm")
+    link = models.URLField(blank=True, null=True, verbose_name="Havola",
+                           help_text="Agar yangilik haqida havola mavjud bo'lsa")
 
     class Meta:
         verbose_name = "Yangilik"
@@ -73,7 +76,8 @@ class MagazineRequirements(models.Model):
 
 
 class Statistics(models.Model):
-    magazine = models.OneToOneField(Magazine, on_delete=models.CASCADE, blank=True, null=True, related_name='statistics', verbose_name="Jurnal")
+    magazine = models.OneToOneField(Magazine, on_delete=models.CASCADE, blank=True, null=True,
+                                    related_name='statistics', verbose_name="Jurnal")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Statistika kiritilgan sana")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Statistika yangilangan sana")
 

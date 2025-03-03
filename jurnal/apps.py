@@ -6,4 +6,4 @@ class JurnalConfig(AppConfig):
     name = 'jurnal'
 
     def ready(self):
-        import signals
+        from . import signals

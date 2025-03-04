@@ -1,9 +1,9 @@
 from django.db import models
 
 class EditorialStaff(models.Model):
-    content_uz = models.TextField(verbose_name="Tahririyat a'zolari ro'yxati (UZ)")
-    content_ru = models.TextField(verbose_name="Tahririyata'zolari ro'yxati (RU)")
-    content_en = models.TextField(verbose_name="Tahririyat a'zolari ro'yxati (EN)")
+    content_uz = models.TextField(verbose_name="Tahririyat a'zolari ro'yxati (UZ)", null=True)
+    content_ru = models.TextField(verbose_name="Tahririyata'zolari ro'yxati (RU)", null=True)
+    content_en = models.TextField(verbose_name="Tahririyat a'zolari ro'yxati (EN)", null=True)
 
     class Meta:
         verbose_name = 'Tahririyat A’zolari'

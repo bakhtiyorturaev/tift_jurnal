@@ -14,8 +14,10 @@ class AboutMagazineForm(forms.ModelForm):
 
 # class MagazineRequirementsForm(forms.ModelForm):
 #     content_uz = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Jurnal talablari to'liq (UZ)")
-#     content_ru = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Jurnal talablari to'liq (RU)", required=False)
-#     content_en = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Jurnal talablari to'liq (EN)", required=False)
+#     content_ru = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Jurnal talablari to'liq (RU)",
+#                                  required=False)
+#     content_en = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), label="Jurnal talablari to'liq (EN)",
+#                                  required=False)
 #
 #     class Meta:
 #         model = MagazineRequirements

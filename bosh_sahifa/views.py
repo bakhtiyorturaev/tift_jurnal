@@ -7,12 +7,11 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import Magazine, Article, ArticleAuthor, ArticleCategories
 from .serializers import MagazineSerializer, ArticleSerializer, ArticleAuthorSerializer, ArticleCategoriesSerializer
 from rest_framework.response import Response
-##
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from .models import Conference
 from .serializers import ConferenceSerializer
 
-class ConferenceViewSet(ReadOnlyModelViewSet):  # ❗ Faqat GET (List va Retrieve)
+class ConferenceViewSet(ReadOnlyModelViewSet):
     queryset = Conference.objects.all()
     serializer_class = ConferenceSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
@@ -74,8 +73,8 @@ class ArticleCategoriesViewSet(ReadOnlyModelViewSet):
         category_serializer = ArticleCategoriesSerializer(categories, many=True, context={'request': request})
 
         return Response({
-            "magazine": magazine_serializer.data,  # 📌 Jurnal haqida ma'lumot
-            "categories": category_serializer.data  # 📌 Jurnalga tegishli kategoriyalar va maqolalar
+            "magazine": magazine_serializer.data,  # Jurnal haqida ma'lumot
+            "categories": category_serializer.data  # Jurnalga tegishli kategoriyalar va maqolalar
         })
 
 def upload_file(request):

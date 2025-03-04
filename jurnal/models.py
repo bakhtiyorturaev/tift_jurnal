@@ -83,7 +83,7 @@ class Statistics(models.Model):
 
     def magazine_info(self):
         """Jurnal haqida to‘liq ma'lumot: sana va nechanchi sonligi"""
-        return f"{self.magazine.created_at.year}-yil, {self.magazine.which_number}, {self.magazine.created_at.strftime('%B')}"
+        return f"{self.magazine.which_number}"
 
     def articles_count(self):
         """O‘sha jurnalga tegishli maqolalar soni"""

@@ -10,7 +10,7 @@ class EditorialStaff(models.Model):
         verbose_name_plural = 'Tahririyat A’zolari'
 
     def __str__(self):
-        return "Tahririyat Xodimlari"
+        return "Tahririyat A'zolari"
 
 
 class HonoraryForeignEditorialMember(models.Model):

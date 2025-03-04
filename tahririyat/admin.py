@@ -5,7 +5,7 @@ from .forms import EditorialStaffForm
 @admin.register(EditorialStaff)
 class EditorialStaffAdmin(admin.ModelAdmin):
     form = EditorialStaffForm
-    list_display = ['id', 'content_uz', 'content_ru', 'content_en']
+    list_display = ['id']
 
 #
 # @admin.register(HonoraryForeignEditorialMember)
